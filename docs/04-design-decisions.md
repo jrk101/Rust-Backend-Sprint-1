@@ -38,23 +38,32 @@ measured. Deduplication and delivery truth remain in PostgreSQL.
 They make signature verification, duplicates, failures, delays, and retries
 demonstrable without real money or external accounts.
 
-### D-007 — Use 13 units as the draft cadence
+### D-007 — Use 17 units as the draft cadence
 
-Thirteen units align the learning arc with the reference curriculum while
-leaving room for project discovery, reliability work, and handover. Units can
-later be compressed or expanded without changing stable task IDs.
+Seventeen units separate first HTTP contact from the first vertical slice,
+retry policy from work claiming, management from security hardening, and CI
+from incident operations. Each unit is planned for roughly one week; gates
+depend on evidence, not an inflexible date. Stable task IDs are unchanged.
 
 ### D-008 — Separate the reliability gate from HTTP management
 
-The Unit 10 milestone uses a local operator command to inspect and replay
-deliveries. Unit 11 adds authentication before exposing those operations as
+The Unit 12 milestone uses a local operator command to inspect and replay
+deliveries. Unit 13 adds authentication before exposing those operations as
 management HTTP endpoints. This keeps the core failure loop testable without
 teaching an unprotected management API as a deployable pattern.
 
 ### D-009 — Start CI with the first shared Rust code
 
-Formatting, Clippy, and fast tests run on shared pull requests from Unit 4.
-The Unit 12 work extends this baseline to database and end-to-end checks.
+Formatting, Clippy, and fast tests run on shared pull requests from Unit 5.
+Database checks begin with Unit 7; Unit 15 strengthens the full test matrix.
+
+### D-010 — Use Actix Web for HTTP and Tokio for background work
+
+Actix Web is the selected HTTP framework for the cohort's preference. Tokio
+remains the runtime and explicit learning target for delivery workers. Actix
+Web's `web::Data` already uses shared ownership internally, so lessons should
+not require an extra `Arc` around it without a specific reason. The separate
+Actix actor framework is not part of V1.
 
 ## Pending
 

@@ -1,69 +1,60 @@
-# Unit 12 — Test, observe, package, break, and fix
+# Unit 12 — Dead letters and operator replay
 
 ## Before you start
 
-Bring the protected management API and shared CI baseline from Units 4 and 11.
-Read the tracing, Compose, and GitHub Actions references in
-`docs/09-resources.md`. The mentor prepares one reversible injected failure on
-a disposable environment and records the unmodified expected behavior.
+Bring persisted attempts and restart-safe due work from Unit 11. Configure the
+sample merchant to fail enough times to exhaust the agreed retry policy, then
+to succeed after replay. Keep the operator command local to the trusted
+development machine.
 
 ## At a glance
 
 | Learn | Use immediately |
 |---|---|
-| Risk-based test selection | `E9.1` |
-| Correlated tracing and health | `E9.2` |
-| Reproducible containers | `E9.3` |
-| Extend existing CI | `E9.4` |
-| Evidence-led debugging | `E9.5–E9.6` |
+| Terminal delivery state | `D4.1` |
+| Idempotent operator intent | `D4.2` |
+| Traceable inspection and replay | `E7.2` |
+| Failure-sequence evidence | `E7.1` milestone |
 
 ## By the end of this unit you can
 
-- choose unit, integration, concurrency, and end-to-end tests by risk;
-- diagnose a request across structured tracing fields;
-- run the system reproducibly with containers;
-- use CI as a merge gate;
-- investigate an injected failure and write a blameless postmortem.
+- move exhausted work into an explicit dead-letter state;
+- replay without erasing history or creating uncontrolled duplicates;
+- inspect event and attempt history from a local operator command;
+- demonstrate the complete reliability loop.
 
-## 1 · Production confidence
+## 1 · Complete the reliability state machine
 
-- [ ] **Task 1 — Write the test matrix** (`E9.1`): Map each core requirement
-  and failure mode to its cheapest trustworthy test. Identify gaps rather than
-  chasing a coverage percentage. **Primary path:**
-  `practice/<student-id>/unit-12/quality/test-matrix.md`.
-- [ ] **Task 2 — Add structured tracing** (`E9.2`): Correlate event, delivery,
-  and attempt identifiers without logging secrets or full sensitive payloads.
-  Add health and readiness behavior that reflects dependencies honestly.
-  **Primary path:** `practice/<student-id>/unit-12/observability/`.
-- [ ] **Task 3 — Package local operation** (`E9.3`): Create Dockerfiles and
-  Compose configuration for PostgreSQL and the three applications. Use health
-  checks and environment-based configuration; do not bake secrets into images.
-  **Primary path:** `practice/<student-id>/unit-12/containers/`.
-- [ ] **Task 4 — Extend the CI gate** (`E9.4`): Keep the Unit 4 format, Clippy,
-  and fast-test gate; add migration validation and a targeted database or
-  end-to-end check on pull requests. Record the required checks and their run
-  time. Avoid tests that depend on a paid service.
-  **Primary path:** `practice/<student-id>/unit-12/ci/`.
+- [ ] **Task 1 — Enter dead-letter state** (`D4.1`): Apply the attempt limit
+  atomically, store the terminal reason, and ensure ordinary workers no longer
+  select the delivery. **Primary path:**
+  `practice/<student-id>/unit-12/dead-letter/`.
+- [ ] **Task 2 — Design safe replay** (`D4.2`): Decide whether replay creates a
+  new delivery or changes an existing one, record operator intent, and make
+  repeated replay requests idempotent. **Primary path:**
+  `practice/<student-id>/unit-12/design/replay-decision.md` and implementation.
+- [ ] **Task 3 — Inspect from a local operator command** (`E7.2`): List one
+  event's deliveries and attempts and replay a dead letter from a command run
+  on the same trusted machine. Document the command and result in
+  `practice/<student-id>/unit-12/operator-cli.md`. No remote operator API is
+  required for this milestone.
+- [ ] **Task 4 — Demonstrate the reliability loop** (`E7.1`): Run
+  `500 → timeout → 500 → dead letter → replay → 200`, preserving every attempt.
+  **Primary path:** `practice/<student-id>/unit-12/reliability-demo.md`.
 
-## 2 · Break and fix
+## Reliable delivery core [MILESTONE]
 
-- [ ] **Task 5 — Investigate the injected failure** (`E9.5`): Use logs,
-  database state, tests, and controlled reproduction to build an evidence trail
-  before changing code. **Primary path:**
-  `practice/<student-id>/unit-12/incident/evidence.md`.
-- [ ] **Task 6 — Write the postmortem** (`E9.6`): Record impact, timeline,
-  contributing conditions, detection, resolution, and one prevention action.
-  Avoid blame and hindsight certainty. **Primary path:**
-  `practice/<student-id>/unit-12/incident/postmortem.md`.
-
-**If short on time, cut:** CI optimization and container polish. Never cut the
-evidence trail, postmortem, or tests around the discovered failure.
+The gate passes when the flow works after process restarts and the recorded
+history explains every transition.
 
 ## End-of-unit checklist
 
-- [ ] Fresh Compose environment starts and reports readiness honestly
-- [ ] CI catches a deliberately broken migration or integration test
-- [ ] Trace IDs connect ingress, delivery, and attempt without leaking secrets
-- [ ] A test now fails for the injected bug and passes for the reviewed fix
+- [ ] Automatic worker stops selecting dead letters
+- [ ] Replay creates one deliberate new attempt path and retains old history
+- [ ] A repeated replay command cannot create uncontrolled duplicate work
+- [ ] Outside witness runs the failure sequence after a restart
+
+**If short on time, cut:** operator-command presentation polish. Never cut
+attempt history, dead-letter state, replay safety, or the demonstration.
 
 Next: `unit-13.md`.

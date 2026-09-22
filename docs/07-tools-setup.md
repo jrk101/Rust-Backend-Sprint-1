@@ -53,7 +53,7 @@ docker compose version
 ```
 
 If using Podman, replace those commands with the equivalent `podman` commands.
-Before Unit 6, run a disposable PostgreSQL container and connect with `psql`
+Before Unit 7, run a disposable PostgreSQL container and connect with `psql`
 or an approved database client. The cohort's shared `compose.yaml` will define
 the exact image, port, and database once the shared starter workspace is built.
 Do not reuse an existing personal database for exercises.
@@ -89,4 +89,3 @@ throwaway crate to the cohort repository.
 
 If setup fails, post the operating system, command, complete error, and what
 you tried. See `13-troubleshooting.md` for common causes.
-

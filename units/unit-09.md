@@ -1,65 +1,63 @@
-# Unit 9 — Persisted retries and work claiming
+# Unit 9 — Tokio delivery workers
 
 ## Before you start
 
-Bring the Unit 8 attempt result and a database with failed deliveries. Read
-PostgreSQL locking and Tokio time sections in `docs/09-resources.md`. Decide
-the retryable response classes and the maximum attempt count in a cohort
-decision record before running the worker.
+Bring the durable delivery rows from Unit 8 and a sample merchant that can
+delay or fail. Read the Tokio tutorial sections on tasks and channels. A
+channel may wake a worker, while PostgreSQL continues to hold due work.
 
 ## At a glance
 
 | Learn | Use immediately |
 |---|---|
-| Attempt state and retry classes | `D3.1` |
-| Backoff, jitter, deterministic time | `A4.1` |
-| Due-work query and index | `D3.2` |
-| Multiple-worker claim and restart | `D3.3`, `A4.2` |
-| `BinaryHeap` comparison | `R4.1` extension |
+| Futures and `.await` | `A3.1` |
+| Bounded channels and backpressure | `A3.2` |
+| Timeouts and HTTP outcomes | `A3.3` |
+| Semaphore or worker bound, shutdown | `A3.4–A3.5`, `E6.1` |
 
 ## By the end of this unit you can
 
-- classify delivery outcomes into success, retry, and terminal failure;
-- calculate bounded exponential backoff with jitter;
-- query and claim due work safely with multiple workers;
-- restart the service without losing scheduled work.
+- explain futures, async functions, tasks, and cooperative scheduling;
+- use channels without treating process memory as durable storage;
+- make outbound HTTP calls with timeouts and bounded concurrency;
+- shut a worker down without abandoning claimed work silently.
 
-## 1 · Failure policy
+## 1 · Async mechanics
 
-- [ ] **Task 1 — Model attempts and next action** (`D3.1`): Define the stored
-  attempt record, sanitized response fields, next-attempt time, and terminal
-  reason. **Primary path:**
-  `practice/<student-id>/unit-09/design/attempt-model.md`.
-- [ ] **Task 2 — Implement backoff and jitter** (`A4.1`): Write a pure function
-  with a maximum delay and injectable randomness/time for deterministic tests.
-  Explain why jitter exists. **Primary path:**
-  `practice/<student-id>/unit-09/retry-policy/`.
-- [ ] **Task 3 — Index due work** (`D3.2`): Write the due-delivery query and
-  justify the supporting index from its filter and ordering.
-  **Primary path:** `practice/<student-id>/unit-09/database/due-work.sql`.
-- [ ] **Task 4 — Claim work safely** (`D3.3`): Compare optimistic claims with a
-  PostgreSQL row-locking approach such as `FOR UPDATE SKIP LOCKED`. Prove that
-  two workers do not own the same attempt concurrently.
-  **Primary path:** `practice/<student-id>/unit-09/work-claiming/`.
-- [ ] **Task 5 — Survive a restart** (`A4.2`): Stop PayHook after scheduling a
-  retry, restart it, and show the persisted delivery becomes eligible and runs.
-  **Primary path:** `practice/<student-id>/unit-09/restart-proof.md`.
+- [ ] **Task 1 — Observe a future** (`A3.1`): Build a small timing lab that
+  compares sequential work, concurrent async work, and accidentally blocking
+  work. Explain what `.await` does and does not do.
+  **Primary path:** `practice/<student-id>/unit-09/async-lab/`.
+- [ ] **Task 2 — Coordinate tasks with a channel** (`A3.2`): Send delivery IDs
+  through a bounded Tokio channel. Demonstrate backpressure and explain why the
+  database, not the channel, remains the source of truth.
+  **Primary path:** `practice/<student-id>/unit-09/channel-lab/`.
 
-## Focused DSA lab
+## 2 · Outbound delivery
 
-- [ ] **Task 6 — Compare scheduling structures** (`R4.1`): Implement a small
-  priority-queue scheduler using `BinaryHeap`, then explain why the production
-  system still queries PostgreSQL for durable due work.
-  **Primary path:** `practice/<student-id>/unit-09/priority-queue-lab/`.
+- [ ] **Task 3 — Implement one delivery attempt** (`A3.3`): POST the stored raw
+  payload with safe headers, connect/request timeouts, response-size limits, and
+  an explicit success policy. **Primary path:**
+  `practice/<student-id>/unit-09/delivery-client/`.
+- [ ] **Task 4 — Bound concurrency** (`A3.4`): Process several independent
+  deliveries concurrently while enforcing a configured limit. Prove the limit
+  with a controllably slow merchant. **Primary path:**
+  `practice/<student-id>/unit-09/delivery-worker/`.
+- [ ] **Task 5 — Handle shutdown** (`A3.5`): Stop accepting new work, allow or
+  cancel in-flight attempts deliberately, and leave recoverable database state.
+  **Primary path:** `practice/<student-id>/unit-09/shutdown-notes.md` and tests.
+- [ ] **Task 6 — Test async failure modes** (`E6.1`): Cover timeout, connection
+  refusal, `2xx`, `4xx`, `5xx`, and shutdown behavior.
+  **Primary path:** `practice/<student-id>/unit-09/tests/`.
 
-**If short on time, cut:** Task 6, then benchmark polish. Never cut the restart
-proof or multiple-worker claim test.
+**If short on time, cut:** throughput comparison. Never cut timeouts or the
+concurrency bound.
 
 ## End-of-unit checklist
 
-- [ ] Retry times are reproducible under a fixed test clock and randomness
-- [ ] Two workers claim one due delivery once per attempt
-- [ ] Restarted worker finds persisted due work
-- [ ] Shared rotation records the retry policy and claim strategy
+- [ ] Slow merchant cannot create unbounded concurrent requests
+- [ ] Timeout and connection failure are recorded as distinct outcomes
+- [ ] Shutdown leaves work in a state the restarted worker can recover
+- [ ] Shared rotation demonstrates the worker with the failing merchant
 
 Next: `unit-10.md`.

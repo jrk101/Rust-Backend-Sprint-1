@@ -1,70 +1,57 @@
-# Unit 13 — Demonstrate and hand over
+# Unit 13 — Protected management
 
 ## Before you start
 
-Freeze the core V1 scope after the Unit 12 fix. Assemble the agreed diagrams,
-configuration example, migration instructions, and complete test matrix. Pick
-a clean-start witness who has not authored the runbook.
+Bring the Unit 12 local operator flow. Read the password storage guidance in
+`docs/09-resources.md`. Decide whether the shared V1 uses one
+configured operator or local user accounts; document the decision and
+authorization ownership before exposing management routes.
 
 ## At a glance
 
 | Learn | Use immediately |
 |---|---|
-| Actual architecture versus original plan | `E10.1`, `E10.6` |
-| Operator instructions | `E10.2` |
-| Clean-room reproduction | `E10.3` |
-| Technical and non-technical explanation | `E10.4–E10.5` |
+| Authentication and authorization | `D5.1–D5.2`, `A5.1` |
+| Safe response shaping | `A5.2` |
 
 ## By the end of this unit you can
 
-- explain PayHook to technical and non-technical audiences;
-- document the architecture as it actually runs;
-- operate and recover the system using a runbook;
-- prove the repository works from a clean checkout.
+- hash passwords and authenticate management users safely;
+- distinguish management authentication from webhook signatures;
+- reject unauthenticated access to inspection and replay endpoints.
 
-## 1 · Final product story
+## 1 · Management authentication
 
-- [ ] **Task 1 — Draw the final architecture** (`E10.1`): Show trust
-  boundaries, applications, modules, PostgreSQL, optional components, request
-  paths, worker flow, security controls, and observability. Remove planned
-  components that were not built. **Primary path:**
-  `practice/<student-id>/unit-13/delivery/final-architecture.md`.
-- [ ] **Task 2 — Write the runbook** (`E10.2`): Document startup, migrations,
-  configuration, health checks, common failures, stuck-delivery diagnosis,
-  replay, secret rotation, backup assumptions, and shutdown.
-  **Primary path:** `practice/<student-id>/unit-13/delivery/runbook.md`.
-- [ ] **Task 3 — Run the clean-start test** (`E10.3`): Give the repository and
-  runbook to someone who did not write them. Record every ambiguity and fix the
-  documentation or automation. **Primary path:**
-  `practice/<student-id>/unit-13/delivery/clean-start-log.md`.
-- [ ] **Task 4 — Present the outcome** (`E10.4`): Demonstrate success,
-  duplicates, retries, dead letters, replay, and recovery. State limitations
-  honestly, including at-least-once delivery. **Primary path:**
-  `practice/<student-id>/unit-13/delivery/demo-script.md`.
-- [ ] **Task 5 — Finish the project README** (`E10.5`): Make the root README
-  useful to a new developer and an interviewer: problem, architecture, local
-  run, test, demonstration, trade-offs, and limitations.
-  **Primary path:** proposed update to `/README.md`.
-- [ ] **Task 6 — Close the learning loop** (`E10.6`): Record what changed from
-  the first design, the hardest failure, one rejected technology, and the next
-  responsible improvement. **Primary path:**
-  `practice/<student-id>/unit-13/delivery/retrospective.md`.
+- [ ] **Task 1 — Define the auth model** (`D5.1`): Specify registration,
+  login, password reset non-goals, authorization ownership, token expiry, and
+  revocation limitations. **Primary path:**
+  `practice/<student-id>/unit-13/design/auth-model.md`.
+- [ ] **Task 2 — Implement password and token handling** (`D5.2`): Use Argon2
+  for password hashing if V1 has local user accounts. If V1 uses one configured
+  operator, implement a bounded credential check and complete the Argon2
+  practice lab separately. Define token/session expiry and revocation limits.
+  Do not use management JWTs to authenticate incoming provider webhooks.
+  **Primary path:** `practice/<student-id>/unit-13/auth/`.
 
-## Project handover [MILESTONE]
+## 2 · Protected management
 
-The project is complete only when the clean-start operator succeeds using the
-written runbook, all required checks pass, and unfinished work is documented
-rather than hidden.
+- [ ] **Task 3 — Build inspection endpoints** (`A5.1`): After authentication
+  is enforced, list and fetch events, deliveries, and attempts with stable
+  pagination, filtering, and bounded page sizes. **Primary path:**
+  `practice/<student-id>/unit-13/management-api/`.
+- [ ] **Task 4 — Protect response data** (`A5.2`): Define which payload,
+  headers, URLs, and error details are returned or redacted. Test an unauthenticated
+  request and a user requesting another user's data. **Primary path:**
+  `practice/<student-id>/unit-13/design/data-exposure.md`.
+
+**If short on time, cut:** account-management extras. Never cut authentication
+or the authorization tests.
 
 ## End-of-unit checklist
 
-- [ ] Fresh operator runs migrations, starts services, and generates a signed event
-- [ ] Duplicate, failed delivery, retry, dead letter, and replay are demonstrated
-- [ ] Tests and CI pass at the final commit
-- [ ] Limitations and deferred work are named in the handover
-- [ ] Shared rotation merges the final runbook and architecture
+- [ ] Unauthenticated management requests fail
+- [ ] Authorized operator can inspect and replay through HTTP
+- [ ] Cross-owner requests fail if the cohort chose local user accounts
+- [ ] Shared rotation merges protected routes and an auth decision record
 
-**If short on time, cut:** presentation polish and optional feature discussion.
-Never cut the runbook, clean-start test, or honest limitations.
-
-Next: the project belongs to its maintainers, not only its original builders.
+Next: `unit-14.md`.

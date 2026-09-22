@@ -1,59 +1,48 @@
-# Unit 5 — Axum service boundaries and webhook verification
+# Unit 5 — The first PayHook request path
 
 ## Before you start
 
-Bring the unsigned Unit 4 request capture and raw-byte contract from Unit 2.
-Read the Axum extractor/state and HMAC material routed by
-`docs/09-resources.md`. Agree on one signed-message format before coding.
+Bring the mock provider and sample merchant from Unit 4. Read the Actix Web
+getting-started and server sections in `docs/09-resources.md`. Decide which
+local port each application uses.
 
 ## At a glance
 
 | Learn | Use immediately |
 |---|---|
-| Handler versus service responsibility | `A2.1` |
-| `Arc` and shared state | `A2.2` |
-| HMAC, timestamps, constant-time comparison | `A2.3` |
-| Error mapping and adversarial tests | `A2.4`, `E4.1` |
+| Actix Web `App`, route, handler, and response | `A1.4` relay |
+| Async outbound HTTP and timeout | `A1.4` relay |
+| Request/response and failure boundary | `E3.1` diagram |
 
 ## By the end of this unit you can
 
-- structure Axum routes, extractors, state, and errors;
-- share immutable application dependencies with `Arc`;
-- explain and implement HMAC verification over raw bytes;
-- test valid, invalid, and malformed requests.
+- run the mock provider, PayHook, and merchant together;
+- describe one request across all three applications;
+- explain what is lost when the in-memory PayHook process restarts.
 
-## 1 · Service structure
+## 1 · First vertical slice
 
-- [ ] **Task 1 — Separate routes from domain work** (`A2.1`): Refactor the
-  vertical slice so handlers translate HTTP while a service layer owns the use
-  case. **Primary path:** `practice/<student-id>/unit-05/payhook-api/`.
-- [ ] **Task 2 — Share application state** (`A2.2`): Use Axum state and `Arc`
-  for dependencies. Explain why `Rc` does not fit a multithreaded server and
-  why `Mutex` is not automatically required. **Primary path:**
-  `practice/<student-id>/unit-05/payhook-api/STATE-NOTES.md`.
+- [ ] **Task 1 — Build an in-memory relay** (`A1.4`): Receive one event in
+  Actix Web and forward it to the merchant with a timeout. Record the response.
+  Keep this version unsigned and in memory so its limitations are visible.
+  **Primary path:** `practice/<student-id>/unit-05/payhook-slice/`.
+- [ ] **Task 2 — Draw the observed flow** (`E3.1`): Update the context diagram
+  with actual ports, requests, responses, timeout, and process-restart loss.
+  **Primary path:** `practice/<student-id>/unit-05/design/first-flow.md`.
 
-## 2 · Verify the sender
+## First end-to-end event [MILESTONE]
 
-- [ ] **Task 3 — Sign and verify raw payloads** (`A2.3`): Implement HMAC signing
-  in the mock provider and constant-time verification in PayHook. Define the
-  signed message format, timestamp tolerance, and test vectors.
-  **Primary path:** `practice/<student-id>/unit-05/signature-lab/`.
-- [ ] **Task 4 — Return safe HTTP errors** (`A2.4`): Map missing signatures,
-  stale timestamps, invalid signatures, malformed JSON, and oversized bodies to
-  deliberate responses without leaking the secret or signature.
-  **Primary path:** `practice/<student-id>/unit-05/http-errors.md` and tests.
-- [ ] **Task 5 — Test the trust boundary** (`E4.1`): Add black-box HTTP tests
-  for correct, altered, stale, and malformed requests.
-  **Primary path:** `practice/<student-id>/unit-05/tests/`.
-
-**If short on time, cut:** custom error presentation. Never cut altered-payload
-and stale-timestamp tests.
+An outside witness starts the three programs and reproduces a mock-provider →
+PayHook → merchant event. The event is unsigned; verification arrives in Unit
+6. The witness records one success and one forced merchant failure.
 
 ## End-of-unit checklist
 
-- [ ] One published signature test vector is accepted by mock provider and PayHook
-- [ ] Altered, stale, missing, and malformed requests are rejected safely
-- [ ] Secret and full signature are absent from logs
-- [ ] Shared rotation merges and reviews the ingress boundary
+- [ ] Outside witness runs the full HTTP path
+- [ ] Diagram matches actual requests and failure points
+- [ ] Shared rotation merges the first PayHook slice
+- [ ] Shared pull request passes format, Clippy, and fast tests
+
+**If short on time, cut:** diagram polish. Never cut the witnessed request.
 
 Next: `unit-06.md`.

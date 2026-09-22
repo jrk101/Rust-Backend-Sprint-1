@@ -1,56 +1,60 @@
-# Unit 6 — PostgreSQL, SQL, and SQLx
+# Unit 6 — Actix Web service boundaries and webhook verification
 
 ## Before you start
 
-Run the disposable PostgreSQL check from `docs/07-tools-setup.md`. Read the
-PostgreSQL and SQLx sections in `docs/09-resources.md`. The Unit 5 service is
-still allowed to run in memory while the schema is designed.
+Bring the unsigned Unit 5 request capture and raw-byte contract from Unit 2.
+Read the Actix Web extractor/state and HMAC material routed by
+`docs/09-resources.md`. Agree on one signed-message format before coding.
 
 ## At a glance
 
 | Learn | Use immediately |
 |---|---|
-| Table grain, primary and foreign keys | `D1.1` |
-| Constraints and migrations | `D1.2` |
-| CRUD and joins in SQL | `D1.3` |
-| SQLx pool and queries | `D1.4–D1.5` |
+| Handler versus service responsibility | `A2.1` |
+| `Arc` and shared state | `A2.2` |
+| HMAC, timestamps, constant-time comparison | `A2.3` |
+| Error mapping and adversarial tests | `A2.4`, `E4.1` |
 
 ## By the end of this unit you can
 
-- design relational tables from domain requirements;
-- write and explain a migration before using an ORM-like abstraction;
-- use SQLx with a connection pool and configuration from the environment;
-- test database behavior against a disposable database.
+- structure Actix Web routes, extractors, state, and errors;
+- share immutable application dependencies with `Arc`;
+- explain and implement HMAC verification over raw bytes;
+- test valid, invalid, and malformed requests.
 
-## 1 · Design durable state
+## 1 · Service structure
 
-- [ ] **Task 1 — Design the first schema** (`D1.1`): Define users, sources,
-  destinations, events, deliveries, and delivery attempts. State each table's
-  grain, keys, required fields, and retention-sensitive fields.
-  **Primary path:** `practice/<student-id>/unit-06/design/data-model.md`.
-- [ ] **Task 2 — Write forward migrations** (`D1.2`): Create migrations with
-  primary keys, foreign keys, timestamps, status checks, and the event identity
-  constraint. **Primary path:**
-  `practice/<student-id>/unit-06/database/migrations/`.
-- [ ] **Task 3 — Exercise the SQL directly** (`D1.3`): Insert, query, update,
-  and join representative rows. Explain the query that shows an event's full
-  attempt history. **Primary path:**
-  `practice/<student-id>/unit-06/database/queries.sql`.
-- [ ] **Task 4 — Add SQLx and pooling** (`D1.4`): Connect through a bounded
-  pool, apply configuration through environment variables, and persist an event.
-  **Primary path:** `practice/<student-id>/unit-06/sqlx-store/`.
-- [ ] **Task 5 — Prove persistence** (`D1.5`): Restart the process and show the
-  accepted event still exists. Add an integration test with isolated state.
-  **Primary path:** `practice/<student-id>/unit-06/sqlx-store/tests/`.
+- [ ] **Task 1 — Separate routes from domain work** (`A2.1`): Refactor the
+  vertical slice so handlers translate HTTP while a service layer owns the use
+  case. **Primary path:** `practice/<student-id>/unit-06/payhook-api/`.
+- [ ] **Task 2 — Share application state** (`A2.2`): Use Actix Web
+  `web::Data` for dependencies. Explain that it uses `Arc` internally, why
+  `Rc` cannot cross workers, and why a `Mutex` is not automatically required.
+  **Primary path:**
+  `practice/<student-id>/unit-06/payhook-api/STATE-NOTES.md`.
 
-**If short on time, cut:** optional query helpers. Never cut schema grain,
-constraints, or the restart proof.
+## 2 · Verify the sender
+
+- [ ] **Task 3 — Sign and verify raw payloads** (`A2.3`): Implement HMAC signing
+  in the mock provider and constant-time verification in PayHook. Define the
+  signed message format, timestamp tolerance, and test vectors.
+  **Primary path:** `practice/<student-id>/unit-06/signature-lab/`.
+- [ ] **Task 4 — Return safe HTTP errors** (`A2.4`): Map missing signatures,
+  stale timestamps, invalid signatures, malformed JSON, and oversized bodies to
+  deliberate responses without leaking the secret or signature.
+  **Primary path:** `practice/<student-id>/unit-06/http-errors.md` and tests.
+- [ ] **Task 5 — Test the trust boundary** (`E4.1`): Add black-box HTTP tests
+  for correct, altered, stale, and malformed requests.
+  **Primary path:** `practice/<student-id>/unit-06/tests/`.
+
+**If short on time, cut:** custom error presentation. Never cut altered-payload
+and stale-timestamp tests.
 
 ## End-of-unit checklist
 
-- [ ] Migrations run from an empty disposable database
-- [ ] Event survives an application restart
-- [ ] Query shows source, destination, delivery, and attempts without hidden state
-- [ ] Shared rotation merges schema and repository with database test evidence
+- [ ] One published signature test vector is accepted by mock provider and PayHook
+- [ ] Altered, stale, missing, and malformed requests are rejected safely
+- [ ] Secret and full signature are absent from logs
+- [ ] Shared rotation merges and reviews the ingress boundary
 
 Next: `unit-07.md`.

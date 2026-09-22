@@ -41,10 +41,15 @@ path. An extension task is assessed only when attempted.
 | `A1.1` | Captured request and response correctly label method, headers, body, and status. |
 | `A1.2` | Mock provider sends a deterministic local test event. |
 | `A1.3` | Merchant returns at least success and deliberate failure. |
+
+## Unit 5
+
+| ID | Minimum proof |
+|---|---|
 | `A1.4` | Relay forwards once with a timeout; outside witness reproduces flow. |
 | `E3.1` | Diagram matches observed ports and failure boundaries. |
 
-## Unit 5
+## Unit 6
 
 | ID | Minimum proof |
 |---|---|
@@ -54,7 +59,7 @@ path. An extension task is assessed only when attempted.
 | `A2.4` | Missing, stale, invalid, malformed, and oversized cases return safe responses. |
 | `E4.1` | Black-box tests exercise the signature boundary. |
 
-## Unit 6
+## Unit 7
 
 | ID | Minimum proof |
 |---|---|
@@ -64,7 +69,7 @@ path. An extension task is assessed only when attempted.
 | `D1.4` | SQLx uses a bounded pool and environment-supplied connection URL. |
 | `D1.5` | Event survives process restart; isolated database test passes. |
 
-## Unit 7
+## Unit 8
 
 | ID | Minimum proof |
 |---|---|
@@ -73,7 +78,7 @@ path. An extension task is assessed only when attempted.
 | `D2.3` | Concurrent test yields one event and one initial delivery. |
 | `E5.1` | Revised sequence diagram and decision record match tested behavior. |
 
-## Unit 8
+## Unit 9
 
 | ID | Minimum proof |
 |---|---|
@@ -84,18 +89,23 @@ path. An extension task is assessed only when attempted.
 | `A3.5` | Shutdown test leaves claimed work recoverable. |
 | `E6.1` | Failure matrix includes `2xx`, `4xx`, `5xx`, timeout, refusal, and shutdown. |
 
-## Unit 9
+## Unit 10
 
 | ID | Minimum proof |
 |---|---|
 | `D3.1` | Attempt record and policy classify retry versus terminal outcome. |
 | `A4.1` | Fixed clock/random source makes backoff tests deterministic and capped. |
 | `D3.2` | Due-work query and index rationale match filter and ordering. |
+
+## Unit 11
+
+| ID | Minimum proof |
+|---|---|
 | `D3.3` | Two workers cannot execute one claim simultaneously. |
 | `A4.2` | Scheduled retry runs after process restart. |
 | `R4.1` | Extension: heap scheduler works and persistence trade-off is explained. |
 
-## Unit 10
+## Unit 12
 
 | ID | Minimum proof |
 |---|---|
@@ -104,7 +114,7 @@ path. An extension task is assessed only when attempted.
 | `E7.2` | Local command inspects history and initiates one replay. |
 | `E7.1` | Outside witness observes failure, dead letter, replay, recovery, and retained history. |
 
-## Unit 11
+## Unit 13
 
 | ID | Minimum proof |
 |---|---|
@@ -112,23 +122,33 @@ path. An extension task is assessed only when attempted.
 | `D5.2` | Protected credential check works; Argon2 lab covers local accounts if not in V1. |
 | `A5.1` | Authenticated operator can list and fetch paginated history. |
 | `A5.2` | Unauthenticated and cross-owner cases are rejected where applicable; sensitive fields redacted. |
+
+## Unit 14
+
+| ID | Minimum proof |
+|---|---|
 | `A6.1` | Oversized or excessive requests receive a deliberate response; key trade-off documented. |
 | `E8.1` | Destination policy handles local/private targets, redirects, and DNS changes. |
 | `E8.2` | Secrets do not appear in log or management response; rotation path documented. |
 | `D5.3` | Extension: in-process and Redis limiters compared under restart and outage. |
 
-## Unit 12
+## Unit 15
 
 | ID | Minimum proof |
 |---|---|
 | `E9.1` | Each core invariant maps to a meaningful test with a named gap. |
 | `E9.2` | Correlation fields connect ingress to attempt without logging payload secrets. |
-| `E9.3` | Clean Compose start succeeds with documented environment settings. |
 | `E9.4` | PR check runs format, Clippy, fast tests, and migration/database check. |
+
+## Unit 16
+
+| ID | Minimum proof |
+|---|---|
+| `E9.3` | Clean Compose start succeeds with documented environment settings. |
 | `E9.5` | Evidence trail identifies failure before the fix. |
 | `E9.6` | Postmortem includes impact, timeline, cause, detection, fix, and prevention. |
 
-## Unit 13
+## Unit 17
 
 | ID | Minimum proof |
 |---|---|
