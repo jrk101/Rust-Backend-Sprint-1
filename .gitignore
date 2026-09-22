@@ -1,0 +1,21 @@
+# Rust build output
+target/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local databases and containers
+data/
+postgres-data/
+*.sqlite
+*.sqlite3
+
+# Editor and operating system files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

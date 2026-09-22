@@ -3,6 +3,12 @@
 Read this entire file before beginning. This unit establishes the product
 boundary and a compiling workspace; neither may be skipped.
 
+## Before you start
+
+Read `docs/00-START-HERE.md`, `docs/01-project-brief.md`, and
+`docs/03-student-guide.md`. Complete the readiness exercise in
+`docs/07-tools-setup.md`. Find your assigned practice folder and reviewer.
+
 ## By the end of this unit you can
 
 - explain PayHook to a non-specialist;
@@ -29,7 +35,9 @@ boundary and a compiling workspace; neither may be skipped.
   are synchronous versus background work. **Primary path:**
   `practice/<student-id>/unit-01/design/context-map.md`.
 
-The brief is a gate. Do not solve ambiguous requirements in code.
+The brief is a gate. The reviewer checks that it names a user, a failure they
+experience, a testable result, and a deliberate V1 boundary. Open questions
+remain explicit; they are not silently resolved in code.
 
 ## 2 · First Rust program
 
@@ -51,9 +59,10 @@ The brief is a gate. Do not solve ambiguous requirements in code.
 - [ ] Code passes `cargo fmt`, `cargo clippy`, and `cargo test`
 - [ ] Task IDs appear in commits and pull requests
 - [ ] At least one peer review completed
+- [ ] Shared rotation promotes an agreed brief and context diagram, following
+      `docs/11-shared-build-plan.md`
 
 **If short on time, cut:** extra event variants, then visual polish. Never cut
 Tasks 1–2 or the first test.
 
 Next: `unit-02.md`.
-

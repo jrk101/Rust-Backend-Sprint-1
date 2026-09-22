@@ -1,5 +1,22 @@
 # Unit 9 — Persisted retries and work claiming
 
+## Before you start
+
+Bring the Unit 8 attempt result and a database with failed deliveries. Read
+PostgreSQL locking and Tokio time sections in `docs/09-resources.md`. Decide
+the retryable response classes and the maximum attempt count in a cohort
+decision record before running the worker.
+
+## At a glance
+
+| Learn | Use immediately |
+|---|---|
+| Attempt state and retry classes | `D3.1` |
+| Backoff, jitter, deterministic time | `A4.1` |
+| Due-work query and index | `D3.2` |
+| Multiple-worker claim and restart | `D3.3`, `A4.2` |
+| `BinaryHeap` comparison | `R4.1` extension |
+
 ## By the end of this unit you can
 
 - classify delivery outcomes into success, retry, and terminal failure;
@@ -38,5 +55,11 @@
 **If short on time, cut:** Task 6, then benchmark polish. Never cut the restart
 proof or multiple-worker claim test.
 
-Next: `unit-10.md`.
+## End-of-unit checklist
 
+- [ ] Retry times are reproducible under a fixed test clock and randomness
+- [ ] Two workers claim one due delivery once per attempt
+- [ ] Restarted worker finds persisted due work
+- [ ] Shared rotation records the retry policy and claim strategy
+
+Next: `unit-10.md`.

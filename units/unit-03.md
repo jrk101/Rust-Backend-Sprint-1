@@ -1,5 +1,11 @@
 # Unit 3 — Domain modelling and explicit failure
 
+## Before you start
+
+Bring the payload contract from Unit 2. Read Rust Book chapters 6, 9, 10, and
+11 as routed by `docs/09-resources.md`. Draft the legal delivery states before
+writing transition code.
+
 ## By the end of this unit you can
 
 - model valid and invalid states with structs and enums;
@@ -14,6 +20,11 @@
 | Rust Book chapters 5–7, 9–10 | Model events, deliveries, and errors |
 | Traits and generic bounds | Define a signature-verifier boundary |
 | Unit testing | Prove domain invariants |
+
+## Project need
+
+Strings such as `"failed"` allow invalid and inconsistent states. Typed states
+and errors give the future HTTP and database layers one shared vocabulary.
 
 ## 1 · Domain types
 
@@ -36,11 +47,17 @@
 
 ## Focused concept lab
 
-Complete a short lifetime exercise involving a borrowed parsed view. Do not
-carry a lifetime-heavy abstraction into PayHook unless it makes the application
-simpler than owning the data.
+- [ ] **Task 5 — Explain one borrowed view** (`R3.5`, extension): Complete a
+  small lifetime exercise involving a parsed view of the Unit 2 payload.
+  Explain when ownership is simpler. **Primary path:**
+  `practice/<student-id>/unit-03/lifetime-lab/`.
 
-**If short on time, cut:** the lifetime extension. Never cut Tasks 1–2.
+## End-of-unit checklist
+
+- [ ] Invalid transitions have failing tests before they are fixed
+- [ ] Safe error formatting omits secrets and full payloads
+- [ ] Shared rotation merges a domain vocabulary with test evidence
+
+**If short on time, cut:** Task 5. Never cut Tasks 1–2.
 
 Next: `unit-04.md`.
-

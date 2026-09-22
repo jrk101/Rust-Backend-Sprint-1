@@ -1,5 +1,20 @@
 # Unit 8 — Tokio delivery workers
 
+## Before you start
+
+Bring the durable delivery rows from Unit 7 and a sample merchant that can
+delay or fail. Read the Tokio tutorial sections on tasks and channels. A
+channel may wake a worker, while PostgreSQL continues to hold due work.
+
+## At a glance
+
+| Learn | Use immediately |
+|---|---|
+| Futures and `.await` | `A3.1` |
+| Bounded channels and backpressure | `A3.2` |
+| Timeouts and HTTP outcomes | `A3.3` |
+| Semaphore or worker bound, shutdown | `A3.4–A3.5`, `E6.1` |
+
 ## By the end of this unit you can
 
 - explain futures, async functions, tasks, and cooperative scheduling;
@@ -38,5 +53,11 @@
 **If short on time, cut:** throughput comparison. Never cut timeouts or the
 concurrency bound.
 
-Next: `unit-09.md`.
+## End-of-unit checklist
 
+- [ ] Slow merchant cannot create unbounded concurrent requests
+- [ ] Timeout and connection failure are recorded as distinct outcomes
+- [ ] Shutdown leaves work in a state the restarted worker can recover
+- [ ] Shared rotation demonstrates the worker with the failing merchant
+
+Next: `unit-09.md`.

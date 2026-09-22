@@ -3,6 +3,10 @@
 The exact number of students and reviewers is pending. These roles scale without
 assuming a particular cohort size.
 
+Before each unit opens, write the assigned names in
+`shared/delivery/rotation-log.md`. No student should discover during a
+milestone that a reviewer or witness was never assigned.
+
 ## Program maintainers
 
 Maintain the curriculum, protect the main branch, review shared-zone changes,
@@ -36,4 +40,3 @@ documentation drift. This may be a rotating responsibility rather than a fixed s
 - Shared changes require passing checks and a maintainer approval.
 - Do not squash student commits when preserving individual authorship is a program goal.
 - Resolve design conflicts before merging incompatible implementations.
-
