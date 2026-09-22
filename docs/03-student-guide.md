@@ -13,19 +13,39 @@
 9. Review at least one teammate's work.
 10. Apply review feedback in the same branch and pull request.
 
+## How to read a task path
+
+`<student-id>` means the ID assigned before the cohort begins. A task with a
+Markdown or SQL path commits that exact file. A task with a directory path
+commits the small crate or module files needed for that task under that
+directory. Rust code commonly needs a manifest, source, and tests; the rule is
+one focused task per commit, not one source file regardless of language needs.
+Do not combine unrelated task IDs just because they touch the same crate.
+
+Every task needs observable evidence. For code, include the relevant passing
+test command and output in the pull-request description. For a design, include
+the reason, one alternative, and a reviewer question. For a milestone, ask a
+student outside the build rotation to reproduce the scenario.
+The minimum proof for each ID is in `16-task-acceptance.md`.
+
 ## Example
 
 ```bash
-git switch -c r2-1-event-parser
-cargo test -p practice_unit_02
+git switch -c r2-3-payload-parser
+cd practice/STUDENT_ID/unit-02/rust/payload-parser
+cargo test
+cd ../../../../..
 git add practice/STUDENT_ID/unit-02/
-git commit -m "R2.1 parse webhook event envelope"
-git push -u origin r2-1-event-parser
+git commit -m "R2.3 parse webhook event envelope"
+git push -u origin r2-3-payload-parser
 ```
 
-Commands and paths will be adjusted when the starter workspace and student IDs
-are generated. Do not create a new architecture because an example path has not
-yet been populated; ask for the current shared decision.
+Replace `STUDENT_ID` with your assigned ID. Create the practice crate at the
+task path before running `cargo test`. Run Git commands from the repository
+root. The example shows the payload parser task `R2.3`.
+
+The [shared build plan](11-shared-build-plan.md) says which practice result is
+promoted into the actual product after each unit.
 
 ## When you are stuck
 
@@ -47,4 +67,3 @@ Only the assigned rotation edits `shared/` during a unit. Rotation work must:
 - include tests proportional to the failure risk;
 - pass the shared CI checks;
 - update the relevant decision, diagram, or runbook entry.
-

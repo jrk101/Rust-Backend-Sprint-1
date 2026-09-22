@@ -1,5 +1,11 @@
 # Unit 2 — Ownership and trustworthy input
 
+## Before you start
+
+Bring the Unit 1 event inspector and an agreed example webhook body. Read Rust
+Book chapter 4 and the string sections of chapter 8. The raw bytes must remain
+available for the signature task in Unit 5.
+
 ## By the end of this unit you can
 
 - explain ownership, moves, borrowing, and slices using event payloads;
@@ -14,6 +20,13 @@
 | Rust Book chapters 4 and 8 | Parse and inspect borrowed payload data |
 | UTF-8, byte slices, JSON boundaries | Preserve raw webhook bytes safely |
 | Branches and pull-request review | Submit focused changes |
+
+## What proves the work
+
+Run the ownership lab and payload-parser tests. Show that an altered or
+malformed byte sequence returns an error without a panic. In review, explain
+one necessary allocation and one avoided allocation. The shared rotation
+publishes `shared/delivery/payload-contract.md` for the next units.
 
 ## 1 · Ownership through payloads
 
@@ -44,5 +57,11 @@ how long.
 
 **If short on time, cut:** performance comparison polish. Never cut Task 3.
 
-Next: `unit-03.md`.
+## End-of-unit checklist
 
+- [ ] Raw bytes and parsed values remain distinguishable
+- [ ] Tests cover invalid input
+- [ ] A teammate reviewed the ownership explanation
+- [ ] Shared payload contract reviewed
+
+Next: `unit-03.md`.

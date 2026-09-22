@@ -1,5 +1,20 @@
 # Unit 5 — Axum service boundaries and webhook verification
 
+## Before you start
+
+Bring the unsigned Unit 4 request capture and raw-byte contract from Unit 2.
+Read the Axum extractor/state and HMAC material routed by
+`docs/09-resources.md`. Agree on one signed-message format before coding.
+
+## At a glance
+
+| Learn | Use immediately |
+|---|---|
+| Handler versus service responsibility | `A2.1` |
+| `Arc` and shared state | `A2.2` |
+| HMAC, timestamps, constant-time comparison | `A2.3` |
+| Error mapping and adversarial tests | `A2.4`, `E4.1` |
+
 ## By the end of this unit you can
 
 - structure Axum routes, extractors, state, and errors;
@@ -34,5 +49,11 @@
 **If short on time, cut:** custom error presentation. Never cut altered-payload
 and stale-timestamp tests.
 
-Next: `unit-06.md`.
+## End-of-unit checklist
 
+- [ ] One published signature test vector is accepted by mock provider and PayHook
+- [ ] Altered, stale, missing, and malformed requests are rejected safely
+- [ ] Secret and full signature are absent from logs
+- [ ] Shared rotation merges and reviews the ingress boundary
+
+Next: `unit-06.md`.

@@ -62,13 +62,17 @@ ID in the commit message and pull-request title.
 
 Milestones are never part of the cut list.
 
+The [requirements and learning chain](14-requirements-and-learning-chain.md)
+shows which project limitation creates each new concept. The
+[shared build plan](11-shared-build-plan.md) names what the rotation contributes
+after individual practice.
+
 ## Before Unit 1
 
 - Read `01-project-brief.md`.
 - Read `02-curriculum-map.md`.
-- Complete the setup guide when it is published for the cohort's supported OSes.
+- Follow `07-tools-setup.md` and pass its readiness exercise.
 - Configure Git with the email attached to your GitHub account.
 - Find your assigned practice folder and team role.
 
 Next: `01-project-brief.md`.
-

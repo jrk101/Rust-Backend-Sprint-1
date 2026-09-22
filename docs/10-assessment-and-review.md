@@ -19,6 +19,10 @@ Each task is evaluated on the smallest relevant set:
 
 Extension work never compensates for missing core reliability behavior.
 
+Use the per-unit cut rule and `15-pacing-and-triage.md` to identify deferred
+standard work. A student who shows the core evidence and names deferred work
+has a clearer record than one who marks every checkbox without a working proof.
+
 ## Review prompts
 
 - What invariant does this code or constraint protect?
@@ -33,4 +37,6 @@ Extension work never compensates for missing core reliability behavior.
 
 Milestones are demonstrated to someone outside the implementation group. The
 witness records the commands, requests, database evidence, and unresolved gaps.
-
+The witness is not one of the authors of that milestone's shared code. The
+mentor records pass, conditional pass with named remediation, or fail. A
+conditional pass may not hide a missing core invariant such as deduplication.

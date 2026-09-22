@@ -1,5 +1,20 @@
 # Unit 13 — Demonstrate and hand over
 
+## Before you start
+
+Freeze the core V1 scope after the Unit 12 fix. Assemble the agreed diagrams,
+configuration example, migration instructions, and complete test matrix. Pick
+a clean-start witness who has not authored the runbook.
+
+## At a glance
+
+| Learn | Use immediately |
+|---|---|
+| Actual architecture versus original plan | `E10.1`, `E10.6` |
+| Operator instructions | `E10.2` |
+| Clean-room reproduction | `E10.3` |
+| Technical and non-technical explanation | `E10.4–E10.5` |
+
 ## By the end of this unit you can
 
 - explain PayHook to technical and non-technical audiences;
@@ -41,8 +56,15 @@ The project is complete only when the clean-start operator succeeds using the
 written runbook, all required checks pass, and unfinished work is documented
 rather than hidden.
 
+## End-of-unit checklist
+
+- [ ] Fresh operator runs migrations, starts services, and generates a signed event
+- [ ] Duplicate, failed delivery, retry, dead letter, and replay are demonstrated
+- [ ] Tests and CI pass at the final commit
+- [ ] Limitations and deferred work are named in the handover
+- [ ] Shared rotation merges the final runbook and architecture
+
 **If short on time, cut:** presentation polish and optional feature discussion.
 Never cut the runbook, clean-start test, or honest limitations.
 
 Next: the project belongs to its maintainers, not only its original builders.
-

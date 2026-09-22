@@ -5,9 +5,9 @@
 | Units | Phase | Outcome |
 |---|---|---|
 | 1–3 | Understand | Agree on the problem and learn enough Rust to model it. |
-| 4–7 | Build foundations | Complete the first HTTP flow, persistence, signatures, and durable ingestion. |
-| 8–10 | Build reliability | Add concurrent delivery, persisted retries, dead-lettering, and replay. |
-| 11–13 | Operate and deliver | Secure, observe, test, package, demonstrate, and hand over the system. |
+| 4–7 | Build foundations | Complete the first HTTP flow, signatures, persistence, and durable ingestion. |
+| 8–10 | Build reliability | Add concurrent delivery, persisted retries, dead-lettering, and operator replay. |
+| 11–13 | Operate and deliver | Protect management, test and package the system, then hand it over. |
 
 ## Units at a glance
 
@@ -16,14 +16,14 @@
 | 1 | Understand the system and Rust workspace | Agreed brief, context map, compiling workspace | Product brief |
 | 2 | Ownership and trustworthy input | Parse and validate event data without unsafe shortcuts | — |
 | 3 | Domain modelling and errors | Domain types and explicit failure model | — |
-| 4 | HTTP foundations and first vertical slice | Signed mock event reaches the sample merchant in memory | First end-to-end event |
+| 4 | HTTP foundations and first vertical slice | An unsigned test event reaches the sample merchant in memory | First end-to-end event |
 | 5 | Axum service design and verification | Structured routes, state, middleware, HMAC verification | — |
 | 6 | PostgreSQL, SQL, SQLx | Migrations and durable event/delivery records | — |
 | 7 | Transactions and duplicate safety | Concurrent duplicate submissions create one event | Durable ingestion |
 | 8 | Tokio delivery workers | Bounded concurrent outbound deliveries with timeouts | — |
 | 9 | Retry scheduling and failure policy | Persisted attempts and recoverable retry scheduling | — |
-| 10 | Dead letters, replay, and management API | Full reliability loop demonstrated | Reliable delivery core |
-| 11 | Authentication, limits, and security | Protected management API and abuse boundaries | — |
+| 10 | Dead letters and operator replay | Full reliability loop demonstrated through a local operator CLI | Reliable delivery core |
+| 11 | Authentication, management, limits, and security | Protected management API and abuse boundaries | — |
 | 12 | Testing, observability, containers, CI | Reproducible build plus break/fix evidence | — |
 | 13 | Deployment thinking and handover | Clean-start demonstration using the runbook | Project handover |
 
@@ -56,7 +56,9 @@ optional lab for rate limiting or caching, never the source of truth.
 
 ### Engineering & Delivery
 
-Every unit uses Git, focused commits, pull requests, and review. Testing grows
+Every unit uses Git, focused commits, pull requests, and review. A minimal
+format/lint/test CI check begins with the first shared Rust code in Unit 4;
+Unit 12 extends it with database and end-to-end checks. Testing grows
 from pure unit tests to HTTP, database, concurrency, and end-to-end tests.
 Structured tracing, configuration, Docker Compose, CI, failure injection,
 security review, and handover arrive before the final demonstration.
@@ -67,4 +69,3 @@ The curriculum may add a concept exercise without adding that concept to
 PayHook. This is especially important for advanced lifetimes, data structures,
 Redis Pub/Sub, and patterns that would make the shared system harder without
 making it more reliable.
-

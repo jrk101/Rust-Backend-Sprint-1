@@ -44,6 +44,18 @@ Thirteen units align the learning arc with the reference curriculum while
 leaving room for project discovery, reliability work, and handover. Units can
 later be compressed or expanded without changing stable task IDs.
 
+### D-008 — Separate the reliability gate from HTTP management
+
+The Unit 10 milestone uses a local operator command to inspect and replay
+deliveries. Unit 11 adds authentication before exposing those operations as
+management HTTP endpoints. This keeps the core failure loop testable without
+teaching an unprotected management API as a deployable pattern.
+
+### D-009 — Start CI with the first shared Rust code
+
+Formatting, Clippy, and fast tests run on shared pull requests from Unit 4.
+The Unit 12 work extends this baseline to database and end-to-end checks.
+
 ## Pending
 
 - Cohort size and the shared-build rotation size
@@ -51,4 +63,3 @@ later be compressed or expanded without changing stable task IDs.
 - Exact deployment target for the final demonstration
 - Whether the repository is public from day one
 - Assessment rubric and minimum/core/stretch completion policy
-

@@ -31,7 +31,8 @@ flowchart LR
 
 ## Core V1 capabilities
 
-1. Register/login for the management API.
+1. Authenticate operators to the management API. Account registration is a
+   later extension if a multi-tenant product is chosen.
 2. Create sources with signing secrets.
 3. Create destinations with target URLs.
 4. Receive and verify signed test webhooks.
@@ -41,8 +42,9 @@ flowchart LR
 8. Record each attempt, response status, duration, and safe error details.
 9. Retry transient failures with bounded exponential backoff and jitter.
 10. Move exhausted deliveries to a dead-letter state.
-11. Inspect events and attempts through management endpoints.
-12. Replay a failed or dead-lettered delivery safely.
+11. Inspect events and attempts through an operator interface.
+12. Replay a failed or dead-lettered delivery safely. A local CLI is sufficient
+    for the Unit 10 reliability gate; protected HTTP management arrives in Unit 11.
 13. Expose health/readiness signals and structured logs.
 14. Run locally with documented commands and free tooling.
 
@@ -101,10 +103,9 @@ history, run all tests, and understand the architecture from the documentation.
 
 ## Open decisions for the cohort
 
-- What authentication session/token design best fits the management API?
+- Should V1 use one configured operator credential or local user accounts?
 - Which response classes are retryable, and what is the maximum retry policy?
 - How long should raw payloads and attempt records be retained?
 - What payload size limit should ingestion enforce?
 - What protections should apply when destination URLs can be configured by users?
 - Is Redis justified after the PostgreSQL-first version is measured?
-
