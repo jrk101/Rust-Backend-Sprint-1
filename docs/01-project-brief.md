@@ -44,7 +44,7 @@ flowchart LR
 10. Move exhausted deliveries to a dead-letter state.
 11. Inspect events and attempts through an operator interface.
 12. Replay a failed or dead-lettered delivery safely. A local CLI is sufficient
-    for the Unit 10 reliability gate; protected HTTP management arrives in Unit 11.
+    for the Unit 12 reliability gate; protected HTTP management arrives in Unit 13.
 13. Expose health/readiness signals and structured logs.
 14. Run locally with documented commands and free tooling.
 
@@ -87,7 +87,7 @@ Both supporting applications must remain smaller than the main service.
 
 ## Constraints
 
-- Rust, Tokio, Axum, PostgreSQL, and SQLx form the core stack.
+- Rust, Actix Web, Tokio, PostgreSQL, and SQLx form the core stack.
 - The architecture begins as a modular monolith.
 - Development and testing must remain possible for ₹0/$0.
 - Real payment credentials and real payment data are never required.

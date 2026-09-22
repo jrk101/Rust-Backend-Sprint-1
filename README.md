@@ -1,6 +1,6 @@
 # Rust Backend Sprint 1
 
-**PayHook · Project-based Rust backend engineering · Curriculum draft v0.2**
+**PayHook · Project-based Rust backend engineering · Curriculum draft v0.3**
 
 This repository is the learning environment for a cohort that designs, builds,
 tests, and hands over PayHook: a self-hosted payment-webhook reliability
@@ -33,7 +33,7 @@ every task.
 | ID | Track | Purpose |
 |---|---|---|
 | `R` | Rust Core | Learn the language by modelling and implementing the domain safely. |
-| `A` | Async & Backend | Build HTTP APIs and concurrent background work with Axum and Tokio. |
+| `A` | Async & Backend | Build HTTP APIs with Actix Web and background work with Tokio. |
 | `D` | Database & Backend Systems | Make events, deliveries, authentication, and operational state durable. |
 | `E` | Engineering & Delivery | Work through Git, reviews, tests, observability, containers, CI, and handover. |
 
@@ -59,7 +59,7 @@ implementation for students to copy.
 
 ## Working assumptions requiring review
 
-- Thirteen units are used as the pacing model. A unit may be a week, but
+- Seventeen units are used as the pacing model. A unit is planned for roughly a week, but
   milestone evidence, not elapsed time, determines whether the group advances.
 - PayHook is the final flagship project; the product name remains provisional.
 - PostgreSQL is the durable source of truth.
@@ -78,6 +78,6 @@ dead-lettered delivery, and operate the system using only the written runbook.
 
 ## Draft status
 
-This is a curriculum draft for review. It has 13 units and 69 stable task IDs.
+This is a curriculum draft for review. It has 17 units and 69 stable task IDs.
 The program lead must complete the publication checklist, including cohort
 assignments and a tested shared starter workspace, before students begin.

@@ -45,6 +45,10 @@ combinations. It is PayHook's durable event-identity boundary.
 
 **Tokio task** — A cooperatively scheduled asynchronous task running on Tokio's runtime.
 
+**Actix Web** — The HTTP framework used for PayHook's routes, extractors, shared application data, and responses. It runs on Tokio; using Actix Web does not require using the separate Actix actor framework.
+
+**Unit** — A focused learning-and-build block, planned for roughly one week. It ends with reviewable evidence; difficult units may take longer.
+
 **Backpressure** — A mechanism that slows producers when consumers cannot keep up.
 
 **Bounded concurrency** — A fixed maximum number of operations allowed in flight.
@@ -57,4 +61,3 @@ requests to unintended internal or sensitive locations through a configurable UR
 
 **Modular monolith** — One deployable application with explicit internal module
 boundaries, without splitting prematurely into networked services.
-

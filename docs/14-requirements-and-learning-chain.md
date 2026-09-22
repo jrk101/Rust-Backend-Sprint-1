@@ -8,17 +8,17 @@ creates. It prevents a tool from appearing only because it is on a syllabus.
 | The client ask is vague | Scope, non-goals, diagrams | Unit 1 brief | Agreed brief and context map |
 | Event payloads contain owned and borrowed data | Ownership, borrowing, byte slices | Unit 2 parser | Raw-body contract |
 | String states permit contradictions | Structs, enums, `Result`, traits | Unit 3 model | Tested domain model |
-| An event needs to cross a network | HTTP, Axum, async client | Unit 4 slice | First provider → merchant request |
-| Any sender could call the endpoint | HMAC over raw bytes | Unit 5 signature lab | Rejected altered and stale payloads |
-| Process memory disappears | SQL, migrations, pooling | Unit 6 store | Event survives restart |
-| Providers repeat and race requests | Transactions, uniqueness | Unit 7 race test | One event and one initial delivery |
-| Destination may be slow or down | Tokio tasks, timeouts, bounds | Unit 8 worker | Controlled failed merchant test |
-| Failed work must survive restarts | Attempt log, due-work query, locking | Unit 9 retry | Restart and two-worker proof |
-| Retries may exhaust | Dead letter, operator replay | Unit 10 failure lab | Full reliability demonstration |
-| Remote operators need protected access | Authentication and authorization | Unit 11 API | Rejected unauthenticated request |
-| Configurable URLs and traffic can be abused | Destination policy, limits | Unit 11 threat lab | Policy and adversarial tests |
-| A working demo can still regress | CI, tracing, containers, incident analysis | Unit 12 | Repeatable failure and fix |
-| Original builders will leave | Runbook, architecture, clean start | Unit 13 | New operator succeeds alone |
+| An event needs to cross a network | HTTP, Actix Web, async client | Units 4–5 slice | First provider → merchant request |
+| Any sender could call the endpoint | HMAC over raw bytes | Unit 6 signature lab | Rejected altered and stale payloads |
+| Process memory disappears | SQL, migrations, pooling | Unit 7 store | Event survives restart |
+| Providers repeat and race requests | Transactions, uniqueness | Unit 8 race test | One event and one initial delivery |
+| Destination may be slow or down | Tokio tasks, timeouts, bounds | Unit 9 worker | Controlled failed merchant test |
+| Failed work must survive restarts | Attempt log, due-work query, locking | Units 10–11 retry | Restart and two-worker proof |
+| Retries may exhaust | Dead letter, operator replay | Unit 12 failure lab | Full reliability demonstration |
+| Remote operators need protected access | Authentication and authorization | Unit 13 API | Rejected unauthenticated request |
+| Configurable URLs and traffic can be abused | Destination policy, limits | Unit 14 threat lab | Policy and adversarial tests |
+| A working demo can still regress | CI, tracing, containers, incident analysis | Units 15–16 | Repeatable failure and fix |
+| Original builders will leave | Runbook, architecture, clean start | Unit 17 | New operator succeeds alone |
 
 ## Product behavior to settle before coding
 

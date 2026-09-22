@@ -1,71 +1,29 @@
 # Curriculum Map
 
-## Phases
+The four tracks are Rust Core (`R`), Async & Backend (`A`), Database & Backend Systems (`D`), and Engineering & Delivery (`E`). Task IDs remain stable even when a task moves to a different unit. See [the task index](05-task-list.md) and [acceptance guide](16-task-acceptance.md).
 
-| Units | Phase | Outcome |
-|---|---|---|
-| 1–3 | Understand | Agree on the problem and learn enough Rust to model it. |
-| 4–7 | Build foundations | Complete the first HTTP flow, signatures, persistence, and durable ingestion. |
-| 8–10 | Build reliability | Add concurrent delivery, persisted retries, dead-lettering, and operator replay. |
-| 11–13 | Operate and deliver | Protect management, test and package the system, then hand it over. |
+One unit is a focused learning-and-build block, planned at roughly one week. It is not a promise that all learners must finish in seven days. Advance on evidence at each gate; allow more time when the core work needs it. Seventeen units give the harder reliability and security topics room to breathe.
 
-## Units at a glance
+| Phase | Unit | Focus | Shared outcome |
+|---|---:|---|---|
+| Discover and model | 1 | Brief, context, Rust setup | Agreed product brief and context map — milestone 1 |
+| | 2 | Ownership, borrowing, raw bytes | Safe byte-handling contract |
+| | 3 | Domain types, errors, test seams | Tested domain model |
+| First request | 4 | HTTP and two test applications | Mock provider and sample merchant |
+| | 5 | Actix Web first vertical slice | Provider → PayHook → merchant — milestone 2 |
+| | 6 | Actix Web boundaries and HMAC | Verified ingress |
+| Durable core | 7 | PostgreSQL, SQL, SQLx | Migrated schema and restart proof |
+| | 8 | Transactions and deduplication | Durable, once-recorded ingestion — milestone 3 |
+| Delivery | 9 | Tokio workers and bounded concurrency | Recorded delivery attempts |
+| | 10 | Retry policy and due work | Deterministic schedule |
+| | 11 | Claiming and restart recovery | Two-worker safety and resumed work |
+| | 12 | Dead letters and replay | Full reliability loop — milestone 4 |
+| Operate and secure | 13 | Protected management | Authenticated operator API |
+| | 14 | Limits and destination security | Abuse-resistant boundary |
+| | 15 | Tests, tracing, CI | Regression and diagnosis evidence |
+| | 16 | Containers and incident analysis | Clean deployment and failure drill |
+| Handover | 17 | Runbook, independent start, demo | Operable handover — milestone 5 |
 
-| Unit | Theme | Central outcome | Milestone |
-|---|---|---|---|
-| 1 | Understand the system and Rust workspace | Agreed brief, context map, compiling workspace | Product brief |
-| 2 | Ownership and trustworthy input | Parse and validate event data without unsafe shortcuts | — |
-| 3 | Domain modelling and errors | Domain types and explicit failure model | — |
-| 4 | HTTP foundations and first vertical slice | An unsigned test event reaches the sample merchant in memory | First end-to-end event |
-| 5 | Axum service design and verification | Structured routes, state, middleware, HMAC verification | — |
-| 6 | PostgreSQL, SQL, SQLx | Migrations and durable event/delivery records | — |
-| 7 | Transactions and duplicate safety | Concurrent duplicate submissions create one event | Durable ingestion |
-| 8 | Tokio delivery workers | Bounded concurrent outbound deliveries with timeouts | — |
-| 9 | Retry scheduling and failure policy | Persisted attempts and recoverable retry scheduling | — |
-| 10 | Dead letters and operator replay | Full reliability loop demonstrated through a local operator CLI | Reliable delivery core |
-| 11 | Authentication, management, limits, and security | Protected management API and abuse boundaries | — |
-| 12 | Testing, observability, containers, CI | Reproducible build plus break/fix evidence | — |
-| 13 | Deployment thinking and handover | Clean-start demonstration using the runbook | Project handover |
+Actix Web is the HTTP framework for PayHook. Tokio remains the async runtime and basis for the background-delivery lessons. The curriculum does not require the separate Actix actor framework.
 
-## Curriculum coverage
-
-### Rust Core
-
-Rust syntax begins in Unit 1. Ownership and borrowing are learned through raw
-payload handling in Unit 2. Structs, enums, pattern matching, `Option`, `Result`,
-and error design shape the domain in Unit 3. Traits and generics appear when
-HTTP-signature and delivery boundaries need substitutable behavior. Iterators
-and closures support validation and transformations. `Arc` is introduced for
-shared application state; locking is used only where shared mutable memory is
-actually justified. Lifetimes and basic DSA receive focused practice rather
-than being forced into production architecture.
-
-### Async & Backend
-
-Students first see the HTTP exchange manually, then implement it in Axum.
-Tokio tasks, cancellation, channels, timers, concurrency limits, timeouts, and
-graceful shutdown appear as the delivery system becomes asynchronous.
-
-### Database & Backend Systems
-
-SQL and relational modelling begin before SQLx abstractions. PostgreSQL owns
-durable event identity and delivery state. Migrations, constraints,
-transactions, pooling, indexes, and safe work claiming arise from reliability
-requirements. Authentication protects management APIs. Redis is a bounded
-optional lab for rate limiting or caching, never the source of truth.
-
-### Engineering & Delivery
-
-Every unit uses Git, focused commits, pull requests, and review. A minimal
-format/lint/test CI check begins with the first shared Rust code in Unit 4;
-Unit 12 extends it with database and end-to-end checks. Testing grows
-from pure unit tests to HTTP, database, concurrency, and end-to-end tests.
-Structured tracing, configuration, Docker Compose, CI, failure injection,
-security review, and handover arrive before the final demonstration.
-
-## Scope discipline
-
-The curriculum may add a concept exercise without adding that concept to
-PayHook. This is especially important for advanced lifetimes, data structures,
-Redis Pub/Sub, and patterns that would make the shared system harder without
-making it more reliable.
+The five milestone gates are Units 1, 5, 8, 12, and 17. They are not cut to meet a calendar date. See [pacing and triage](15-pacing-and-triage.md) for scope adjustments.

@@ -1,60 +1,47 @@
-# Unit 10 — Dead letters and operator replay
+# Unit 10 — Retry policy and due work
 
 ## Before you start
 
-Bring persisted attempts and restart-safe due work from Unit 9. Configure the
-sample merchant to fail enough times to exhaust the agreed retry policy, then
-to succeed after replay. Keep the operator command local to the trusted
-development machine.
+Bring the Unit 9 attempt result and a database with failed deliveries. Read
+PostgreSQL index and Tokio time sections in `docs/09-resources.md`. Decide
+the retryable response classes and the maximum attempt count in a cohort
+decision record before running the worker.
 
 ## At a glance
 
 | Learn | Use immediately |
 |---|---|
-| Terminal delivery state | `D4.1` |
-| Idempotent operator intent | `D4.2` |
-| Traceable inspection and replay | `E7.2` |
-| Failure-sequence evidence | `E7.1` milestone |
+| Attempt state and retry classes | `D3.1` |
+| Backoff, jitter, deterministic time | `A4.1` |
+| Due-work query and index | `D3.2` |
 
 ## By the end of this unit you can
 
-- move exhausted work into an explicit dead-letter state;
-- replay without erasing history or creating uncontrolled duplicates;
-- inspect event and attempt history from a local operator command;
-- demonstrate the complete reliability loop.
+- classify delivery outcomes into success, retry, and terminal failure;
+- calculate bounded exponential backoff with jitter;
+- query due work efficiently from persistent state.
 
-## 1 · Complete the reliability state machine
+## 1 · Failure policy
 
-- [ ] **Task 1 — Enter dead-letter state** (`D4.1`): Apply the attempt limit
-  atomically, store the terminal reason, and ensure ordinary workers no longer
-  select the delivery. **Primary path:**
-  `practice/<student-id>/unit-10/dead-letter/`.
-- [ ] **Task 2 — Design safe replay** (`D4.2`): Decide whether replay creates a
-  new delivery or changes an existing one, record operator intent, and make
-  repeated replay requests idempotent. **Primary path:**
-  `practice/<student-id>/unit-10/design/replay-decision.md` and implementation.
-- [ ] **Task 3 — Inspect from a local operator command** (`E7.2`): List one
-  event's deliveries and attempts and replay a dead letter from a command run
-  on the same trusted machine. Document the command and result in
-  `practice/<student-id>/unit-10/operator-cli.md`. No remote operator API is
-  required for this milestone.
-- [ ] **Task 4 — Demonstrate the reliability loop** (`E7.1`): Run
-  `500 → timeout → 500 → dead letter → replay → 200`, preserving every attempt.
-  **Primary path:** `practice/<student-id>/unit-10/reliability-demo.md`.
+- [ ] **Task 1 — Model attempts and next action** (`D3.1`): Define the stored
+  attempt record, sanitized response fields, next-attempt time, and terminal
+  reason. **Primary path:**
+  `practice/<student-id>/unit-10/design/attempt-model.md`.
+- [ ] **Task 2 — Implement backoff and jitter** (`A4.1`): Write a pure function
+  with a maximum delay and injectable randomness/time for deterministic tests.
+  Explain why jitter exists. **Primary path:**
+  `practice/<student-id>/unit-10/retry-policy/`.
+- [ ] **Task 3 — Index due work** (`D3.2`): Write the due-delivery query and
+  justify the supporting index from its filter and ordering.
+  **Primary path:** `practice/<student-id>/unit-10/database/due-work.sql`.
 
-## Reliable delivery core [MILESTONE]
-
-The gate passes when the flow works after process restarts and the recorded
-history explains every transition.
+**If short on time, cut:** benchmark polish. Never cut the persisted attempt
+record, capped policy, or due-work query.
 
 ## End-of-unit checklist
 
-- [ ] Automatic worker stops selecting dead letters
-- [ ] Replay creates one deliberate new attempt path and retains old history
-- [ ] A repeated replay command cannot create uncontrolled duplicate work
-- [ ] Outside witness runs the failure sequence after a restart
-
-**If short on time, cut:** operator-command presentation polish. Never cut
-attempt history, dead-letter state, replay safety, or the demonstration.
+- [ ] Retry times are reproducible under a fixed test clock and randomness
+- [ ] Due-work query returns only eligible deliveries in deadline order
+- [ ] Shared rotation records the retry policy and due-work query
 
 Next: `unit-11.md`.

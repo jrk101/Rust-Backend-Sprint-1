@@ -4,7 +4,7 @@
 
 Bring the Unit 1 event inspector and an agreed example webhook body. Read Rust
 Book chapter 4 and the string sections of chapter 8. The raw bytes must remain
-available for the signature task in Unit 5.
+available for the signature task in Unit 6.
 
 ## By the end of this unit you can
 

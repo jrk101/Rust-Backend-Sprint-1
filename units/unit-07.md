@@ -1,58 +1,56 @@
-# Unit 7 — Transactions and duplicate safety
+# Unit 7 — PostgreSQL, SQL, and SQLx
 
 ## Before you start
 
-Bring the Unit 6 migration and Unit 5 verified-ingress test. Read the
-PostgreSQL transaction and unique-constraint material in
-`docs/09-resources.md`. Use a separate disposable database for concurrency
-tests so repeated runs cannot contaminate evidence.
+Run the disposable PostgreSQL check from `docs/07-tools-setup.md`. Read the
+PostgreSQL and SQLx sections in `docs/09-resources.md`. The Unit 6 service is
+still allowed to run in memory while the schema is designed.
 
 ## At a glance
 
 | Learn | Use immediately |
 |---|---|
-| Transaction boundary | `D2.1` |
-| Composite uniqueness and conflict handling | `D2.2` |
-| Concurrency testing | `D2.3` |
-| Design revision from evidence | `E5.1` |
+| Table grain, primary and foreign keys | `D1.1` |
+| Constraints and migrations | `D1.2` |
+| CRUD and joins in SQL | `D1.3` |
+| SQLx pool and queries | `D1.4–D1.5` |
 
 ## By the end of this unit you can
 
-- explain why check-then-insert is unsafe under concurrency;
-- use a transaction and unique constraint to protect event identity;
-- distinguish an application pre-check from the final database guarantee;
-- test simultaneous duplicate requests.
+- design relational tables from domain requirements;
+- write and explain a migration before using an ORM-like abstraction;
+- use SQLx with a connection pool and configuration from the environment;
+- test database behavior against a disposable database.
 
-## 1 · Durable ingestion
+## 1 · Design durable state
 
-- [ ] **Task 1 — Define the ingestion transaction** (`D2.1`): Write the steps
-  that verify, insert an event, and create its delivery. Name what must commit
-  together and what must stay outside the transaction.
-  **Primary path:** `practice/<student-id>/unit-07/design/ingestion-transaction.md`.
-- [ ] **Task 2 — Enforce provider identity** (`D2.2`): Add the correct composite
-  unique constraint and handle the conflict deliberately. State what response a
-  duplicate receives and what information it may safely reveal.
-  **Primary path:** `practice/<student-id>/unit-07/deduplication/`.
-- [ ] **Task 3 — Attack it concurrently** (`D2.3`): Send the same signed event
-  concurrently and prove one event row and one initial delivery exist.
-  **Primary path:** `practice/<student-id>/unit-07/tests/concurrent-dedup.rs`.
-- [ ] **Task 4 — Review the durable-ingestion design** (`E5.1`): Update the
-  architecture, data model, sequence diagram, and decision record based on real
-  implementation evidence. **Primary path:**
-  `practice/<student-id>/unit-07/design/durable-ingestion-review.md`.
+- [ ] **Task 1 — Design the first schema** (`D1.1`): Define users, sources,
+  destinations, events, deliveries, and delivery attempts. State each table's
+  grain, keys, required fields, and retention-sensitive fields.
+  **Primary path:** `practice/<student-id>/unit-07/design/data-model.md`.
+- [ ] **Task 2 — Write forward migrations** (`D1.2`): Create migrations with
+  primary keys, foreign keys, timestamps, status checks, and the event identity
+  constraint. **Primary path:**
+  `practice/<student-id>/unit-07/database/migrations/`.
+- [ ] **Task 3 — Exercise the SQL directly** (`D1.3`): Insert, query, update,
+  and join representative rows. Explain the query that shows an event's full
+  attempt history. **Primary path:**
+  `practice/<student-id>/unit-07/database/queries.sql`.
+- [ ] **Task 4 — Add SQLx and pooling** (`D1.4`): Connect through a bounded
+  pool, apply configuration through environment variables, and persist an event.
+  **Primary path:** `practice/<student-id>/unit-07/sqlx-store/`.
+- [ ] **Task 5 — Prove persistence** (`D1.5`): Restart the process and show the
+  accepted event still exists. Add an integration test with isolated state.
+  **Primary path:** `practice/<student-id>/unit-07/sqlx-store/tests/`.
 
-## Durable ingestion [MILESTONE]
-
-The shared build may proceed only after signature verification, transaction
-boundaries, uniqueness, and concurrency evidence are agreed.
+**If short on time, cut:** optional query helpers. Never cut schema grain,
+constraints, or the restart proof.
 
 ## End-of-unit checklist
 
-- [ ] An invalid signature writes no event
-- [ ] Concurrent copies produce one event and one initial delivery
-- [ ] A process crash cannot leave an event without its initial delivery
-- [ ] Outside witness reproduces the database counts
-
-**If short on time, cut:** diagram polish. Never cut the concurrent duplicate test.
+- [ ] Migrations run from an empty disposable database
+- [ ] Event survives an application restart
+- [ ] Query shows source, destination, delivery, and attempts without hidden state
+- [ ] Shared rotation merges schema and repository with database test evidence
 
 Next: `unit-08.md`.

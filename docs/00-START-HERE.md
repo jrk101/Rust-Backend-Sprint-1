@@ -55,12 +55,14 @@ ID in the commit message and pull-request title.
 | Unit | Gate | Evidence |
 |---|---|---|
 | 1 | Product brief agreed | Scope, non-goals, success criteria, system context |
-| 4 | First end-to-end event | Mock provider → PayHook → sample merchant |
-| 7 | Durable ingestion agreed | Signed event stored once under concurrency |
-| 10 | Reliable delivery core | Persisted attempts, retry schedule, dead letter, replay |
-| 13 | Project handover | Clean-start run using only the runbook |
+| 5 | First end-to-end event | Mock provider → PayHook → sample merchant |
+| 8 | Durable ingestion agreed | Signed event stored once under concurrency |
+| 12 | Reliable delivery core | Persisted attempts, retry schedule, dead letter, replay |
+| 17 | Project handover | Clean-start run using only the runbook |
 
 Milestones are never part of the cut list.
+One unit is roughly one week of learning and building, with flexible time for
+harder topics. Evidence, not the calendar alone, determines progression.
 
 The [requirements and learning chain](14-requirements-and-learning-chain.md)
 shows which project limitation creates each new concept. The
