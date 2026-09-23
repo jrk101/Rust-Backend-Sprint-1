@@ -1,4 +1,4 @@
-# Unit 9 — Tokio delivery workers
+# Unit 9: Tokio delivery workers
 
 ## Before you start
 
@@ -24,29 +24,29 @@ channel may wake a worker, while PostgreSQL continues to hold due work.
 
 ## 1 · Async mechanics
 
-- [ ] **Task 1 — Observe a future** (`A3.1`): Build a small timing lab that
+- [ ] **Task 1: Observe a future** (`A3.1`): Build a small timing lab that
   compares sequential work, concurrent async work, and accidentally blocking
   work. Explain what `.await` does and does not do.
   **Primary path:** `practice/<student-id>/unit-09/async-lab/`.
-- [ ] **Task 2 — Coordinate tasks with a channel** (`A3.2`): Send delivery IDs
+- [ ] **Task 2: Coordinate tasks with a channel** (`A3.2`): Send delivery IDs
   through a bounded Tokio channel. Demonstrate backpressure and explain why the
   database, not the channel, remains the source of truth.
   **Primary path:** `practice/<student-id>/unit-09/channel-lab/`.
 
 ## 2 · Outbound delivery
 
-- [ ] **Task 3 — Implement one delivery attempt** (`A3.3`): POST the stored raw
+- [ ] **Task 3: Implement one delivery attempt** (`A3.3`): POST the stored raw
   payload with safe headers, connect/request timeouts, response-size limits, and
   an explicit success policy. **Primary path:**
   `practice/<student-id>/unit-09/delivery-client/`.
-- [ ] **Task 4 — Bound concurrency** (`A3.4`): Process several independent
+- [ ] **Task 4: Bound concurrency** (`A3.4`): Process several independent
   deliveries concurrently while enforcing a configured limit. Prove the limit
   with a controllably slow merchant. **Primary path:**
   `practice/<student-id>/unit-09/delivery-worker/`.
-- [ ] **Task 5 — Handle shutdown** (`A3.5`): Stop accepting new work, allow or
+- [ ] **Task 5: Handle shutdown** (`A3.5`): Stop accepting new work, allow or
   cancel in-flight attempts deliberately, and leave recoverable database state.
   **Primary path:** `practice/<student-id>/unit-09/shutdown-notes.md` and tests.
-- [ ] **Task 6 — Test async failure modes** (`E6.1`): Cover timeout, connection
+- [ ] **Task 6: Test async failure modes** (`E6.1`): Cover timeout, connection
   refusal, `2xx`, `4xx`, `5xx`, and shutdown behavior.
   **Primary path:** `practice/<student-id>/unit-09/tests/`.
 

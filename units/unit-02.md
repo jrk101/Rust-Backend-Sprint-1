@@ -1,4 +1,4 @@
-# Unit 2 — Ownership and trustworthy input
+# Unit 2: Ownership and trustworthy input
 
 ## Before you start
 
@@ -30,21 +30,21 @@ publishes `shared/delivery/payload-contract.md` for the next units.
 
 ## 1 · Ownership through payloads
 
-- [ ] **Task 1 — Trace moves and borrows** (`R2.1`): Repair a provided event
+- [ ] **Task 1: Trace moves and borrows** (`R2.1`): Repair a provided event
   program containing move errors, then explain each compiler message.
   **Primary path:** `practice/<student-id>/unit-02/rust/ownership-lab/`.
-- [ ] **Task 2 — Borrow before allocating** (`R2.2`): Write functions that
+- [ ] **Task 2: Borrow before allocating** (`R2.2`): Write functions that
   accept `&str` and `&[u8]` where ownership is unnecessary; compare them with
   owned alternatives. **Primary path:**
   `practice/<student-id>/unit-02/rust/borrowing-lab/`.
-- [ ] **Task 3 — Preserve raw bytes** (`R2.3`): Parse an event envelope while
+- [ ] **Task 3: Preserve raw bytes** (`R2.3`): Parse an event envelope while
   retaining the original bytes that a later signature check will authenticate.
   Reject malformed input through `Result`, never `unwrap` on request data.
   **Primary path:** `practice/<student-id>/unit-02/rust/payload-parser/`.
 
 ## 2 · Reviewable engineering
 
-- [ ] **Task 4 — Review a compiler-led fix** (`E2.1`): Review a teammate's
+- [ ] **Task 4: Review a compiler-led fix** (`E2.1`): Review a teammate's
   ownership task. Identify whether their fix removes an allocation or merely
   hides the ownership problem by cloning. **Evidence:** pull-request link in
   `practice/<student-id>/unit-02/review-log.md`.

@@ -1,4 +1,4 @@
-# Unit 5 — The first PayHook request path
+# Unit 5: The first PayHook request path
 
 ## Before you start
 
@@ -22,11 +22,11 @@ local port each application uses.
 
 ## 1 · First vertical slice
 
-- [ ] **Task 1 — Build an in-memory relay** (`A1.4`): Receive one event in
+- [ ] **Task 1: Build an in-memory relay** (`A1.4`): Receive one event in
   Actix Web and forward it to the merchant with a timeout. Record the response.
   Keep this version unsigned and in memory so its limitations are visible.
   **Primary path:** `practice/<student-id>/unit-05/payhook-slice/`.
-- [ ] **Task 2 — Draw the observed flow** (`E3.1`): Update the context diagram
+- [ ] **Task 2: Draw the observed flow** (`E3.1`): Update the context diagram
   with actual ports, requests, responses, timeout, and process-restart loss.
   **Primary path:** `practice/<student-id>/unit-05/design/first-flow.md`.
 

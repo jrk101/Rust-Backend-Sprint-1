@@ -75,7 +75,7 @@ path. An extension task is assessed only when attempted.
 |---|---|
 | `D2.1` | Diagram states what commits atomically and what happens on crash. |
 | `D2.2` | Database unique constraint rejects repeated source/event identity. |
-| `D2.3` | Concurrent test yields one event and one initial delivery. |
+| `D2.3` | Repeated synchronized concurrent test yields one event and one initial delivery; reviewer verifies the database constraint is the final guarantee. |
 | `E5.1` | Revised sequence diagram and decision record match tested behavior. |
 
 ## Unit 9
@@ -101,7 +101,7 @@ path. An extension task is assessed only when attempted.
 
 | ID | Minimum proof |
 |---|---|
-| `D3.3` | Two workers cannot execute one claim simultaneously. |
+| `D3.3` | Two workers cannot claim the same eligible attempt simultaneously; short transaction and abandoned-claim recovery are documented. |
 | `A4.2` | Scheduled retry runs after process restart. |
 | `R4.1` | Extension: heap scheduler works and persistence trade-off is explained. |
 
@@ -128,7 +128,7 @@ path. An extension task is assessed only when attempted.
 | ID | Minimum proof |
 |---|---|
 | `A6.1` | Oversized or excessive requests receive a deliberate response; key trade-off documented. |
-| `E8.1` | Destination policy handles local/private targets, redirects, and DNS changes. |
+| `E8.1` | Mentor-reviewed destination policy and adversarial tests handle local/private targets, redirects, and DNS or connection changes. |
 | `E8.2` | Secrets do not appear in log or management response; rotation path documented. |
 | `D5.3` | Extension: in-process and Redis limiters compared under restart and outage. |
 

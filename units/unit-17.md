@@ -1,4 +1,4 @@
-# Unit 17 — Demonstrate and hand over
+# Unit 17: Demonstrate and hand over
 
 ## Before you start
 
@@ -24,28 +24,28 @@ a clean-start witness who has not authored the runbook.
 
 ## 1 · Final product story
 
-- [ ] **Task 1 — Draw the final architecture** (`E10.1`): Show trust
+- [ ] **Task 1: Draw the final architecture** (`E10.1`): Show trust
   boundaries, applications, modules, PostgreSQL, optional components, request
   paths, worker flow, security controls, and observability. Remove planned
   components that were not built. **Primary path:**
   `practice/<student-id>/unit-17/delivery/final-architecture.md`.
-- [ ] **Task 2 — Write the runbook** (`E10.2`): Document startup, migrations,
+- [ ] **Task 2: Write the runbook** (`E10.2`): Document startup, migrations,
   configuration, health checks, common failures, stuck-delivery diagnosis,
   replay, secret rotation, backup assumptions, and shutdown.
   **Primary path:** `practice/<student-id>/unit-17/delivery/runbook.md`.
-- [ ] **Task 3 — Run the clean-start test** (`E10.3`): Give the repository and
+- [ ] **Task 3: Run the clean-start test** (`E10.3`): Give the repository and
   runbook to someone who did not write them. Record every ambiguity and fix the
   documentation or automation. **Primary path:**
   `practice/<student-id>/unit-17/delivery/clean-start-log.md`.
-- [ ] **Task 4 — Present the outcome** (`E10.4`): Demonstrate success,
+- [ ] **Task 4: Present the outcome** (`E10.4`): Demonstrate success,
   duplicates, retries, dead letters, replay, and recovery. State limitations
   honestly, including at-least-once delivery. **Primary path:**
   `practice/<student-id>/unit-17/delivery/demo-script.md`.
-- [ ] **Task 5 — Finish the project README** (`E10.5`): Make the root README
+- [ ] **Task 5: Finish the project README** (`E10.5`): Make the root README
   useful to a new developer and an interviewer: problem, architecture, local
   run, test, demonstration, trade-offs, and limitations.
   **Primary path:** proposed update to `/README.md`.
-- [ ] **Task 6 — Close the learning loop** (`E10.6`): Record what changed from
+- [ ] **Task 6: Close the learning loop** (`E10.6`): Record what changed from
   the first design, the hardest failure, one rejected technology, and the next
   responsible improvement. **Primary path:**
   `practice/<student-id>/unit-17/delivery/retrospective.md`.

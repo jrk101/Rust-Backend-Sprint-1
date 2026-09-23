@@ -1,4 +1,4 @@
-# Unit 16 — Package, break, and fix
+# Unit 16: Package, break, and fix
 
 ## Before you start
 
@@ -22,18 +22,18 @@ injected failure in a disposable environment and records expected behavior.
 
 ## 1 · Reproducible operation
 
-- [ ] **Task 1 — Package local operation** (`E9.3`): Create Dockerfiles and
+- [ ] **Task 1: Package local operation** (`E9.3`): Create Dockerfiles and
   Compose configuration for PostgreSQL and the three applications. Use health
   checks and environment-based configuration; do not bake secrets into images.
   **Primary path:** `practice/<student-id>/unit-16/containers/`.
 
 ## 2 · Break and fix
 
-- [ ] **Task 2 — Investigate the injected failure** (`E9.5`): Use logs,
+- [ ] **Task 2: Investigate the injected failure** (`E9.5`): Use logs,
   database state, tests, and controlled reproduction to build an evidence
   trail before changing code. **Primary path:**
   `practice/<student-id>/unit-16/incident/evidence.md`.
-- [ ] **Task 3 — Write the postmortem** (`E9.6`): Record impact, timeline,
+- [ ] **Task 3: Write the postmortem** (`E9.6`): Record impact, timeline,
   contributing conditions, detection, resolution, and one prevention action.
   Avoid blame and hindsight certainty. **Primary path:**
   `practice/<student-id>/unit-16/incident/postmortem.md`.

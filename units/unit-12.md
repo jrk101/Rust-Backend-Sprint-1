@@ -1,4 +1,4 @@
-# Unit 12 — Dead letters and operator replay
+# Unit 12: Dead letters and operator replay
 
 ## Before you start
 
@@ -25,20 +25,20 @@ development machine.
 
 ## 1 · Complete the reliability state machine
 
-- [ ] **Task 1 — Enter dead-letter state** (`D4.1`): Apply the attempt limit
+- [ ] **Task 1: Enter dead-letter state** (`D4.1`): Apply the attempt limit
   atomically, store the terminal reason, and ensure ordinary workers no longer
   select the delivery. **Primary path:**
   `practice/<student-id>/unit-12/dead-letter/`.
-- [ ] **Task 2 — Design safe replay** (`D4.2`): Decide whether replay creates a
+- [ ] **Task 2: Design safe replay** (`D4.2`): Decide whether replay creates a
   new delivery or changes an existing one, record operator intent, and make
   repeated replay requests idempotent. **Primary path:**
   `practice/<student-id>/unit-12/design/replay-decision.md` and implementation.
-- [ ] **Task 3 — Inspect from a local operator command** (`E7.2`): List one
+- [ ] **Task 3: Inspect from a local operator command** (`E7.2`): List one
   event's deliveries and attempts and replay a dead letter from a command run
   on the same trusted machine. Document the command and result in
   `practice/<student-id>/unit-12/operator-cli.md`. No remote operator API is
   required for this milestone.
-- [ ] **Task 4 — Demonstrate the reliability loop** (`E7.1`): Run
+- [ ] **Task 4: Demonstrate the reliability loop** (`E7.1`): Run
   `500 → timeout → 500 → dead letter → replay → 200`, preserving every attempt.
   **Primary path:** `practice/<student-id>/unit-12/reliability-demo.md`.
 

@@ -1,4 +1,4 @@
-# Unit 14 — Limits and security boundaries
+# Unit 14: Limits and security boundaries
 
 ## Before you start
 
@@ -24,22 +24,24 @@ test targets when exploring blocked destination URLs.
 
 ## 1 · Bound the API and its destinations
 
-- [ ] **Task 1 — Apply request limits** (`A6.1`): Add payload-size,
+- [ ] **Task 1: Apply request limits** (`A6.1`): Add payload-size,
   request-timeout, and rate limits at the appropriate Actix Web boundaries.
   Explain the identity each limiter keys on and its false-positive trade-off.
   **Primary path:** `practice/<student-id>/unit-14/limits/`.
-- [ ] **Task 2 — Threat-model destination URLs** (`E8.1`): Identify SSRF,
+- [ ] **Task 2: Threat-model destination URLs** (`E8.1`): Identify SSRF,
   redirect, DNS, private-network, and credential-leak risks. Propose a V1
-  allow/block policy the cohort can test. **Primary path:**
+  allow/block policy the cohort can test. Include local and link-local targets,
+  every resolved address, redirect behavior, and whether the HTTP client can
+  connect to a different address after validation. **Primary path:**
   `practice/<student-id>/unit-14/security/threat-model.md`.
-- [ ] **Task 3 — Rotate and redact secrets** (`E8.2`): Define storage,
+- [ ] **Task 3: Rotate and redact secrets** (`E8.2`): Define storage,
   display-once behavior, logging redaction, and a simple source-secret
   rotation path. **Primary path:**
   `practice/<student-id>/unit-14/security/secret-policy.md`.
 
 ## Optional Redis lab
 
-- [ ] **Task 4 — Compare rate-limit stores** (`D5.3`, extension): Implement
+- [ ] **Task 4: Compare rate-limit stores** (`D5.3`, extension): Implement
   the same small limiter in process and with Redis. Compare restart behavior,
   multi-instance consistency, failure modes, and operational cost. Do not move
   durable deduplication into Redis. **Primary path:**
@@ -54,5 +56,11 @@ test targets when exploring blocked destination URLs.
 
 **If short on time, cut:** Task 4, then secondary limiter tuning. Never cut
 the destination policy or secret redaction.
+
+**Mentor checkpoint:** Budget an additional review session for `E8.1` and
+provide a mentor-owned policy and adversarial test set for comparison. Review
+the actual outbound client configuration, not only URL parsing. If the cohort
+cannot demonstrate a safe general-purpose policy, restrict V1 to explicitly
+approved destinations and keep that limitation visible in the runbook.
 
 Next: `unit-15.md`.

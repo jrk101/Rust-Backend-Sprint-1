@@ -1,4 +1,4 @@
-# Unit 8 — Transactions and duplicate safety
+# Unit 8: Transactions and duplicate safety
 
 ## Before you start
 
@@ -25,18 +25,22 @@ tests so repeated runs cannot contaminate evidence.
 
 ## 1 · Durable ingestion
 
-- [ ] **Task 1 — Define the ingestion transaction** (`D2.1`): Write the steps
+- [ ] **Task 1: Define the ingestion transaction** (`D2.1`): Write the steps
   that verify, insert an event, and create its delivery. Name what must commit
   together and what must stay outside the transaction.
   **Primary path:** `practice/<student-id>/unit-08/design/ingestion-transaction.md`.
-- [ ] **Task 2 — Enforce provider identity** (`D2.2`): Add the correct composite
+- [ ] **Task 2: Enforce provider identity** (`D2.2`): Add the correct composite
   unique constraint and handle the conflict deliberately. State what response a
   duplicate receives and what information it may safely reveal.
   **Primary path:** `practice/<student-id>/unit-08/deduplication/`.
-- [ ] **Task 3 — Attack it concurrently** (`D2.3`): Send the same signed event
-  concurrently and prove one event row and one initial delivery exist.
+- [ ] **Task 3: Attack it concurrently** (`D2.3`): Send the same signed event
+  concurrently using a barrier or other synchronized start, repeat the test,
+  and prove one event row and one initial delivery exist. Explain why a
+  sequential duplicate test does not establish race safety. The unique
+  constraint and conflict handling, not an application pre-check, must be the
+  final guarantee.
   **Primary path:** `practice/<student-id>/unit-08/tests/concurrent-dedup.rs`.
-- [ ] **Task 4 — Review the durable-ingestion design** (`E5.1`): Update the
+- [ ] **Task 4: Review the durable-ingestion design** (`E5.1`): Update the
   architecture, data model, sequence diagram, and decision record based on real
   implementation evidence. **Primary path:**
   `practice/<student-id>/unit-08/design/durable-ingestion-review.md`.
@@ -54,5 +58,10 @@ boundaries, uniqueness, and concurrency evidence are agreed.
 - [ ] Outside witness reproduces the database counts
 
 **If short on time, cut:** diagram polish. Never cut the concurrent duplicate test.
+
+**Mentor checkpoint:** Review the migration's composite unique key and the
+test's simultaneous-start mechanism before accepting `D2.3`. `SKIP LOCKED`
+belongs to Unit 11 work claiming, not to duplicate-event identity. Allow
+extra time if learners have not previously debugged a race condition.
 
 Next: `unit-09.md`.

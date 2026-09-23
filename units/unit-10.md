@@ -1,4 +1,4 @@
-# Unit 10 — Retry policy and due work
+# Unit 10: Retry policy and due work
 
 ## Before you start
 
@@ -23,15 +23,15 @@ decision record before running the worker.
 
 ## 1 · Failure policy
 
-- [ ] **Task 1 — Model attempts and next action** (`D3.1`): Define the stored
+- [ ] **Task 1: Model attempts and next action** (`D3.1`): Define the stored
   attempt record, sanitized response fields, next-attempt time, and terminal
   reason. **Primary path:**
   `practice/<student-id>/unit-10/design/attempt-model.md`.
-- [ ] **Task 2 — Implement backoff and jitter** (`A4.1`): Write a pure function
+- [ ] **Task 2: Implement backoff and jitter** (`A4.1`): Write a pure function
   with a maximum delay and injectable randomness/time for deterministic tests.
   Explain why jitter exists. **Primary path:**
   `practice/<student-id>/unit-10/retry-policy/`.
-- [ ] **Task 3 — Index due work** (`D3.2`): Write the due-delivery query and
+- [ ] **Task 3: Index due work** (`D3.2`): Write the due-delivery query and
   justify the supporting index from its filter and ordering.
   **Primary path:** `practice/<student-id>/unit-10/database/due-work.sql`.
 

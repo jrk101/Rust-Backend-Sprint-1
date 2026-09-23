@@ -6,6 +6,13 @@ hours using a learner from the target entry level and record the real timings
 after each unit. If the core task set regularly exceeds the allotted time,
 extend the unit or reduce scope before advancing.
 
+Units 8, 10–11, and 14 need planned mentor attention. Unit 8's concurrent
+duplicate test must start requests together and rely on a database uniqueness
+guarantee. Units 10–11 require one reviewed claim and recovery protocol before
+students implement competing worker designs. Unit 14 needs extra security
+review time and adversarial destination-policy tests. These are time-budget
+risks, not optional milestone work.
+
 | Units | Core that cannot be cut | Standard work | Extension / first cut |
 |---|---|---|---|
 | 1–3 | Brief, context, ownership, domain and error tests | Additional event cases and trait comparison | Lifetime depth beyond the focused lab |

@@ -1,4 +1,4 @@
-# Unit 13 — Protected management
+# Unit 13: Protected management
 
 ## Before you start
 
@@ -22,11 +22,11 @@ authorization ownership before exposing management routes.
 
 ## 1 · Management authentication
 
-- [ ] **Task 1 — Define the auth model** (`D5.1`): Specify registration,
+- [ ] **Task 1: Define the auth model** (`D5.1`): Specify registration,
   login, password reset non-goals, authorization ownership, token expiry, and
   revocation limitations. **Primary path:**
   `practice/<student-id>/unit-13/design/auth-model.md`.
-- [ ] **Task 2 — Implement password and token handling** (`D5.2`): Use Argon2
+- [ ] **Task 2: Implement password and token handling** (`D5.2`): Use Argon2
   for password hashing if V1 has local user accounts. If V1 uses one configured
   operator, implement a bounded credential check and complete the Argon2
   practice lab separately. Define token/session expiry and revocation limits.
@@ -35,11 +35,11 @@ authorization ownership before exposing management routes.
 
 ## 2 · Protected management
 
-- [ ] **Task 3 — Build inspection endpoints** (`A5.1`): After authentication
+- [ ] **Task 3: Build inspection endpoints** (`A5.1`): After authentication
   is enforced, list and fetch events, deliveries, and attempts with stable
   pagination, filtering, and bounded page sizes. **Primary path:**
   `practice/<student-id>/unit-13/management-api/`.
-- [ ] **Task 4 — Protect response data** (`A5.2`): Define which payload,
+- [ ] **Task 4: Protect response data** (`A5.2`): Define which payload,
   headers, URLs, and error details are returned or redacted. Test an unauthenticated
   request and a user requesting another user's data. **Primary path:**
   `practice/<student-id>/unit-13/design/data-exposure.md`.

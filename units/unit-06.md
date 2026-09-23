@@ -1,4 +1,4 @@
-# Unit 6 — Actix Web service boundaries and webhook verification
+# Unit 6: Actix Web service boundaries and webhook verification
 
 ## Before you start
 
@@ -24,10 +24,10 @@ Read the Actix Web extractor/state and HMAC material routed by
 
 ## 1 · Service structure
 
-- [ ] **Task 1 — Separate routes from domain work** (`A2.1`): Refactor the
+- [ ] **Task 1: Separate routes from domain work** (`A2.1`): Refactor the
   vertical slice so handlers translate HTTP while a service layer owns the use
   case. **Primary path:** `practice/<student-id>/unit-06/payhook-api/`.
-- [ ] **Task 2 — Share application state** (`A2.2`): Use Actix Web
+- [ ] **Task 2: Share application state** (`A2.2`): Use Actix Web
   `web::Data` for dependencies. Explain that it uses `Arc` internally, why
   `Rc` cannot cross workers, and why a `Mutex` is not automatically required.
   **Primary path:**
@@ -35,15 +35,15 @@ Read the Actix Web extractor/state and HMAC material routed by
 
 ## 2 · Verify the sender
 
-- [ ] **Task 3 — Sign and verify raw payloads** (`A2.3`): Implement HMAC signing
+- [ ] **Task 3: Sign and verify raw payloads** (`A2.3`): Implement HMAC signing
   in the mock provider and constant-time verification in PayHook. Define the
   signed message format, timestamp tolerance, and test vectors.
   **Primary path:** `practice/<student-id>/unit-06/signature-lab/`.
-- [ ] **Task 4 — Return safe HTTP errors** (`A2.4`): Map missing signatures,
+- [ ] **Task 4: Return safe HTTP errors** (`A2.4`): Map missing signatures,
   stale timestamps, invalid signatures, malformed JSON, and oversized bodies to
   deliberate responses without leaking the secret or signature.
   **Primary path:** `practice/<student-id>/unit-06/http-errors.md` and tests.
-- [ ] **Task 5 — Test the trust boundary** (`E4.1`): Add black-box HTTP tests
+- [ ] **Task 5: Test the trust boundary** (`E4.1`): Add black-box HTTP tests
   for correct, altered, stale, and malformed requests.
   **Primary path:** `practice/<student-id>/unit-06/tests/`.
 
