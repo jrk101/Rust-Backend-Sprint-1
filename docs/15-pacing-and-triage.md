@@ -1,10 +1,10 @@
 # Pacing and Triage
 
-Seventeen units are a proposal for the cohort schedule, not proof that every
-student can complete every task in one week. The program lead should estimate
-hours using a learner from the target entry level and record the real timings
-after each unit. If the core task set regularly exceeds the allotted time,
-extend the unit or reduce scope before advancing.
+The cohort uses 17 units, planned for roughly one week each. This is a pacing
+guide, not a promise that every student completes every task in one week.
+Record actual time and blockers during each unit. If required work takes
+longer, extend the unit and defer standard or extension work without weakening
+the milestone.
 
 Units 8, 10–11, and 14 need planned mentor attention. Unit 8's concurrent
 duplicate test must start requests together and rely on a database uniqueness
