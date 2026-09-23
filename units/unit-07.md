@@ -24,9 +24,11 @@ still allowed to run in memory while the schema is designed.
 
 ## 1 · Design durable state
 
-- [ ] **Task 1: Design the first schema** (`D1.1`): Define users, sources,
+- [ ] **Task 1: Design the first schema** (`D1.1`): Define sources,
   destinations, events, deliveries, and delivery attempts. State each table's
-  grain, keys, required fields, and retention-sensitive fields.
+  grain, keys, required fields, and retention-sensitive fields. Add a users
+  table only if the Unit 1 V1 choice includes local user accounts; otherwise
+  explain the configured-operator alternative.
   **Primary path:** `practice/<student-id>/unit-07/design/data-model.md`.
 - [ ] **Task 2: Write forward migrations** (`D1.2`): Create migrations with
   primary keys, foreign keys, timestamps, status checks, and the event identity

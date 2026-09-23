@@ -31,7 +31,8 @@ publishes `shared/delivery/payload-contract.md` for the next units.
 ## 1 · Ownership through payloads
 
 - [ ] **Task 1: Trace moves and borrows** (`R2.1`): Repair a provided event
-  program containing move errors, then explain each compiler message.
+  program containing move errors from
+  `practice/fixtures/unit-02-ownership/`, then explain each compiler message.
   **Primary path:** `practice/<student-id>/unit-02/rust/ownership-lab/`.
 - [ ] **Task 2: Borrow before allocating** (`R2.2`): Write functions that
   accept `&str` and `&[u8]` where ownership is unnecessary; compare them with

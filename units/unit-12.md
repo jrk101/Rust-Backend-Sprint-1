@@ -4,7 +4,8 @@
 
 Bring persisted attempts and restart-safe due work from Unit 11. Configure the
 sample merchant to fail enough times to exhaust the agreed retry policy, then
-to succeed after replay. Keep the operator command local to the trusted
+to succeed after replay. Use a fresh disposable database so prior test work
+cannot consume the merchant's programmed responses. Keep the operator command local to the trusted
 development machine.
 
 ## At a glance
