@@ -81,3 +81,6 @@ dead-lettered delivery, and operate the system using only the written runbook.
 This is a curriculum draft for review. It has 17 units and 69 stable task IDs.
 The program lead must complete the publication checklist, including cohort
 assignments and a tested shared starter workspace, before students begin.
+The repository is not yet a runnable student starter: the shared Cargo
+workspace, sample-PR CI run, migration rehearsal, and Unit 1 learner trial
+remain publication gates, not completed work.

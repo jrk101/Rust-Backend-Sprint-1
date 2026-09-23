@@ -4,11 +4,11 @@
 
 Each task is evaluated on the smallest relevant set:
 
-1. **Behavior** — Does the required scenario work, including failure behavior?
-2. **Reasoning** — Can the student explain the choice and rejected alternative?
-3. **Safety** — Are secrets, untrusted input, concurrency, and data handled deliberately?
-4. **Testing** — Does evidence target the important risk rather than only the happy path?
-5. **Reviewability** — Is the change focused, named, documented, and understandable?
+1. **Behavior**: Does the required scenario work, including failure behavior?
+2. **Reasoning**: Can the student explain the choice and rejected alternative?
+3. **Safety**: Are secrets, untrusted input, concurrency, and data handled deliberately?
+4. **Testing**: Does evidence target the important risk rather than only the happy path?
+5. **Reviewability**: Is the change focused, named, documented, and understandable?
 
 ## Completion levels
 

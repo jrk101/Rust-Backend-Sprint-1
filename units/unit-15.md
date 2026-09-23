@@ -1,4 +1,4 @@
-# Unit 15 — Test and observe the system
+# Unit 15: Test and observe the system
 
 ## Before you start
 
@@ -22,15 +22,15 @@ Read the tracing and GitHub Actions references in `docs/09-resources.md`.
 
 ## 1 · Production confidence
 
-- [ ] **Task 1 — Write the test matrix** (`E9.1`): Map each core requirement
+- [ ] **Task 1: Write the test matrix** (`E9.1`): Map each core requirement
   and failure mode to its cheapest trustworthy test. Identify gaps rather than
   chasing a coverage percentage. **Primary path:**
   `practice/<student-id>/unit-15/quality/test-matrix.md`.
-- [ ] **Task 2 — Add structured tracing** (`E9.2`): Correlate event, delivery,
+- [ ] **Task 2: Add structured tracing** (`E9.2`): Correlate event, delivery,
   and attempt identifiers without logging secrets or full sensitive payloads.
   Add health and readiness behavior that reflects dependencies honestly.
   **Primary path:** `practice/<student-id>/unit-15/observability/`.
-- [ ] **Task 3 — Extend the CI gate** (`E9.4`): Keep the Unit 5 format, Clippy,
+- [ ] **Task 3: Extend the CI gate** (`E9.4`): Keep the Unit 5 format, Clippy,
   and fast-test gate; add migration validation and a targeted database or
   end-to-end check on pull requests. Record the required checks and their run
   time. Avoid tests that depend on a paid service.

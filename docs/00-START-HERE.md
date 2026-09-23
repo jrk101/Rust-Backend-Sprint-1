@@ -42,10 +42,10 @@ has stricter review and automated checks because later work depends on it.
 
 Task IDs never change once published:
 
-- `R` — Rust Core
-- `A` — Async & Backend
-- `D` — Database & Backend Systems
-- `E` — Engineering & Delivery
+- `R`: Rust Core
+- `A`: Async & Backend
+- `D`: Database & Backend Systems
+- `E`: Engineering & Delivery
 
 For example, `A4.2` identifies an Async & Backend task in task group 4. Use the
 ID in the commit message and pull-request title.

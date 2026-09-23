@@ -31,6 +31,9 @@ have to guess its answers.
 
 - [ ] Unit 1 prerequisite check is explicit and achievable
 - [ ] Each unit's required work fits the agreed time budget
+- [ ] Mentor review time is reserved for Units 8, 10–11, and 14
+- [ ] Unit 11's claim, expiry, and crash-recovery protocol is reviewed before implementation
+- [ ] Unit 14's destination policy and adversarial test set are reviewed before implementation
 - [ ] Every milestone has an outside witness and observable pass criteria
 - [ ] Core, standard, and extension work are marked in `15-pacing-and-triage.md`
 - [ ] The Unit 12 failure sequence is rehearsed on a disposable database

@@ -1,4 +1,4 @@
-# Unit 7 — PostgreSQL, SQL, and SQLx
+# Unit 7: PostgreSQL, SQL, and SQLx
 
 ## Before you start
 
@@ -24,22 +24,22 @@ still allowed to run in memory while the schema is designed.
 
 ## 1 · Design durable state
 
-- [ ] **Task 1 — Design the first schema** (`D1.1`): Define users, sources,
+- [ ] **Task 1: Design the first schema** (`D1.1`): Define users, sources,
   destinations, events, deliveries, and delivery attempts. State each table's
   grain, keys, required fields, and retention-sensitive fields.
   **Primary path:** `practice/<student-id>/unit-07/design/data-model.md`.
-- [ ] **Task 2 — Write forward migrations** (`D1.2`): Create migrations with
+- [ ] **Task 2: Write forward migrations** (`D1.2`): Create migrations with
   primary keys, foreign keys, timestamps, status checks, and the event identity
   constraint. **Primary path:**
   `practice/<student-id>/unit-07/database/migrations/`.
-- [ ] **Task 3 — Exercise the SQL directly** (`D1.3`): Insert, query, update,
+- [ ] **Task 3: Exercise the SQL directly** (`D1.3`): Insert, query, update,
   and join representative rows. Explain the query that shows an event's full
   attempt history. **Primary path:**
   `practice/<student-id>/unit-07/database/queries.sql`.
-- [ ] **Task 4 — Add SQLx and pooling** (`D1.4`): Connect through a bounded
+- [ ] **Task 4: Add SQLx and pooling** (`D1.4`): Connect through a bounded
   pool, apply configuration through environment variables, and persist an event.
   **Primary path:** `practice/<student-id>/unit-07/sqlx-store/`.
-- [ ] **Task 5 — Prove persistence** (`D1.5`): Restart the process and show the
+- [ ] **Task 5: Prove persistence** (`D1.5`): Restart the process and show the
   accepted event still exists. Add an integration test with isolated state.
   **Primary path:** `practice/<student-id>/unit-07/sqlx-store/tests/`.
 

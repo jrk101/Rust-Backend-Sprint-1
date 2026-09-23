@@ -1,4 +1,4 @@
-# Unit 4 — HTTP foundations and the two test applications
+# Unit 4: HTTP foundations and the two test applications
 
 ## Before you start
 
@@ -22,13 +22,13 @@ local ports and record the values in a local, ignored configuration file.
 
 ## 1 · See the protocol
 
-- [ ] **Task 1 — Capture an HTTP exchange** (`A1.1`): Send a request manually
+- [ ] **Task 1: Capture an HTTP exchange** (`A1.1`): Send a request manually
   and annotate method, path, headers, body, status, and timeout behavior.
   **Primary path:** `practice/<student-id>/unit-04/http/http-notes.md`.
-- [ ] **Task 2 — Build the mock provider** (`A1.2`): Create a minimal program
+- [ ] **Task 2: Build the mock provider** (`A1.2`): Create a minimal program
   that sends one deterministic JSON event. Signing arrives in Unit 6.
   **Primary path:** `practice/<student-id>/unit-04/mock-provider/`.
-- [ ] **Task 3 — Build the sample merchant** (`A1.3`): Create an Actix Web endpoint
+- [ ] **Task 3: Build the sample merchant** (`A1.3`): Create an Actix Web endpoint
   that records a safe summary and returns a configurable status sequence.
   **Primary path:** `practice/<student-id>/unit-04/sample-merchant/`.
 

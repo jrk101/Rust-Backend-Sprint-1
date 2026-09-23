@@ -6,23 +6,23 @@ One unit is a focused learning-and-build block, planned at roughly one week. It 
 
 | Phase | Unit | Focus | Shared outcome |
 |---|---:|---|---|
-| Discover and model | 1 | Brief, context, Rust setup | Agreed product brief and context map — milestone 1 |
+| Discover and model | 1 | Brief, context, Rust setup | Agreed product brief and context map: milestone 1 |
 | | 2 | Ownership, borrowing, raw bytes | Safe byte-handling contract |
 | | 3 | Domain types, errors, test seams | Tested domain model |
 | First request | 4 | HTTP and two test applications | Mock provider and sample merchant |
-| | 5 | Actix Web first vertical slice | Provider → PayHook → merchant — milestone 2 |
+| | 5 | Actix Web first vertical slice | Provider → PayHook → merchant: milestone 2 |
 | | 6 | Actix Web boundaries and HMAC | Verified ingress |
 | Durable core | 7 | PostgreSQL, SQL, SQLx | Migrated schema and restart proof |
-| | 8 | Transactions and deduplication | Durable, once-recorded ingestion — milestone 3 |
+| | 8 | Transactions and deduplication | Durable, once-recorded ingestion: milestone 3 |
 | Delivery | 9 | Tokio workers and bounded concurrency | Recorded delivery attempts |
 | | 10 | Retry policy and due work | Deterministic schedule |
 | | 11 | Claiming and restart recovery | Two-worker safety and resumed work |
-| | 12 | Dead letters and replay | Full reliability loop — milestone 4 |
+| | 12 | Dead letters and replay | Full reliability loop: milestone 4 |
 | Operate and secure | 13 | Protected management | Authenticated operator API |
 | | 14 | Limits and destination security | Abuse-resistant boundary |
 | | 15 | Tests, tracing, CI | Regression and diagnosis evidence |
 | | 16 | Containers and incident analysis | Clean deployment and failure drill |
-| Handover | 17 | Runbook, independent start, demo | Operable handover — milestone 5 |
+| Handover | 17 | Runbook, independent start, demo | Operable handover: milestone 5 |
 
 Actix Web is the HTTP framework for PayHook. Tokio remains the async runtime and basis for the background-delivery lessons. The curriculum does not require the separate Actix actor framework.
 
