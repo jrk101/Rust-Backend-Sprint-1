@@ -32,9 +32,9 @@ cargo fmt --version
 cargo clippy --version
 ```
 
-The shared product will commit `rust-toolchain.toml` and `Cargo.lock` when its
-workspace is created. Use that selected toolchain for cohort work. Individual
-practice crates may use the same stable toolchain.
+The starter workspace already commits `rust-toolchain.toml` and `Cargo.lock`.
+Use its selected stable toolchain for cohort work. Individual practice crates
+may use the same toolchain.
 
 ## 3. Editor
 

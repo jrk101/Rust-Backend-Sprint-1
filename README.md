@@ -27,6 +27,8 @@ explains why each concept appears. The [shared build plan](docs/11-shared-build-
 connects individual practice to the product, and the
 [task acceptance guide](docs/16-task-acceptance.md) gives reviewable proof for
 every task.
+The [simulated cohort findings](docs/17-simulated-cohort-findings.md) record
+the reproduced blockers and the remaining launch gates.
 
 ## The four tracks
 
@@ -53,8 +55,8 @@ Rust-Backend-Sprint-1/
 ```
 
 `practice/` is where every student attempts every important skill. `shared/`
-contains the one product the cohort will hand over. The shared applications are
-empty curriculum targets at this stage; this repository does not ship a hidden
+contains the one product the cohort will hand over. The shared applications
+currently contain only compiling placeholder crates, not a completed PayHook
 implementation for students to copy.
 
 ## Working assumptions requiring review
@@ -81,6 +83,7 @@ dead-lettered delivery, and operate the system using only the written runbook.
 This is a curriculum draft for review. It has 17 units and 69 stable task IDs.
 The program lead must complete the publication checklist, including cohort
 assignments and a tested shared starter workspace, before students begin.
-The repository is not yet a runnable student starter: the shared Cargo
-workspace, sample-PR CI run, migration rehearsal, and Unit 1 learner trial
-remain publication gates, not completed work.
+The repository now has a minimal compiling starter workspace, but it is not
+ready for students. A sample-PR CI run, PostgreSQL migration rehearsal, clean
+Compose start, staged teaching checkpoint, and Unit 1 learner trial remain
+publication gates, not completed work.

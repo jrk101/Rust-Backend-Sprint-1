@@ -30,6 +30,8 @@ local ports and record the values in a local, ignored configuration file.
   **Primary path:** `practice/<student-id>/unit-04/mock-provider/`.
 - [ ] **Task 3: Build the sample merchant** (`A1.3`): Create an Actix Web endpoint
   that records a safe summary and returns a configurable status sequence.
+  Make both deliberate HTTP failures and a slow response reproducible, so
+  Unit 12 can later run the agreed failure sequence without manual code edits.
   **Primary path:** `practice/<student-id>/unit-04/sample-merchant/`.
 
 ## End-of-unit checklist

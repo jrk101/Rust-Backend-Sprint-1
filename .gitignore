@@ -11,6 +11,7 @@ target/
 # Local databases and containers
 data/
 postgres-data/
+work/
 *.sqlite
 *.sqlite3
 

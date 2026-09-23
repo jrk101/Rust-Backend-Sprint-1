@@ -1,0 +1,17 @@
+name: Starter Rust checks
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  rust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Format
+        run: cargo fmt --all -- --check
+      - name: Lint
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      - name: Unit tests
+        run: cargo test --workspace --locked

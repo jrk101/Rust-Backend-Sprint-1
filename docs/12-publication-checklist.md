@@ -17,15 +17,18 @@ have to guess its answers.
 ## Repository readiness
 
 - [ ] A mentor follows `07-tools-setup.md` on a fresh machine
-- [ ] A minimal shared Cargo workspace exists before the Unit 5 rotation
-- [ ] `rust-toolchain.toml`, `Cargo.lock`, `.gitignore`, and `.env.example` exist
+- [x] A minimal shared Cargo workspace exists before the Unit 5 rotation; placeholder crates pass local format, Clippy, and tests
+- [x] `rust-toolchain.toml`, `Cargo.lock`, `.gitignore`, and `.env.example` exist
 - [ ] Shared CI runs on a sample pull request before Unit 5
+- [ ] The Unit 5 unsigned path is demonstrated before Unit 6 signing work, with a recoverable teaching checkpoint for late joiners
 - [ ] PostgreSQL/SQLx migration commands are tested before Unit 7
+- [ ] Compose starts the final stack cleanly on a supported machine before Unit 16
 - [ ] The mock provider and merchant require no payment account or money
 - [ ] Every required documentation link resolves
 - [ ] Task IDs are unique and all referenced paths are intentional
 - [ ] Every task ID in the unit files has one entry in `16-task-acceptance.md`
 - [ ] Unit 1 is trialled with at least one learner from the intended entry level
+- [ ] Every promised exercise fixture exists; the Unit 2 ownership fixture is present and intentionally fails to compile
 
 ## Curriculum readiness
 

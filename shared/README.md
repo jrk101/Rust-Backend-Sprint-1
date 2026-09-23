@@ -7,5 +7,6 @@ This folder will hold the cohort's single reviewed implementation.
 - `sample-merchant/`: controllably successful/failing destination
 - `delivery/`: shared brief, diagrams, demonstrations, and handover material
 
-No implementation is pre-generated in curriculum draft v0.3. Architecture and
-workspace structure are agreed before the starter code is created.
+The three application crates compile but contain only placeholder entry
+points. Students add the Actix Web, Tokio, and SQLx behavior as the units
+introduce it. The placeholders are not evidence that a milestone is complete.

@@ -1,5 +1,5 @@
 # PayHook shared application
 
-Reserved for the shared main service after the Unit 1 scope gate and starter
-workspace review.
-
+Compiling placeholder crate for the shared main service. Unit 5 adds the
+first unsigned request path; later units add verification, persistence, and
+delivery. The starter does not implement those behaviors.
