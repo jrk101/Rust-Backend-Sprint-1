@@ -27,8 +27,6 @@ explains why each concept appears. The [shared build plan](docs/11-shared-build-
 connects individual practice to the product, and the
 [task acceptance guide](docs/16-task-acceptance.md) gives reviewable proof for
 every task.
-The [simulated cohort findings](docs/17-simulated-cohort-findings.md) record
-what the local rehearsal found and which fixes were incorporated.
 
 ## The four tracks
 
