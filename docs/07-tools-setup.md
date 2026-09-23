@@ -1,7 +1,8 @@
 # Tools Setup
 
-Complete this before Unit 1. A mentor should run the same checks on a fresh
-Windows and a fresh macOS/Linux machine before opening the cohort.
+Complete the Git and Rust checks before Unit 1. Add the database and container
+tools before the units that use them. Ask a mentor for help with any failed
+setup step.
 
 ## 1. Git and GitHub
 
@@ -55,7 +56,7 @@ docker compose version
 If using Podman, replace those commands with the equivalent `podman` commands.
 Before Unit 7, run a disposable PostgreSQL container and connect with `psql`
 or an approved database client. The cohort's shared `compose.yaml` will define
-the exact image, port, and database once the shared starter workspace is built.
+the exact image, port, and database when the cohort builds its deployment stack.
 Do not reuse an existing personal database for exercises.
 
 ## 5. HTTP client
@@ -66,7 +67,7 @@ request bodies and custom headers. PowerShell users should call `curl.exe` if
 
 ## 6. Secrets and local configuration
 
-Use a local `.env` file ignored by Git. A committed `.env.example` will list
+Use a local `.env` file ignored by Git. The committed `.env.example` lists
 required variable names with harmless examples. Use generated secrets only for
 the mock provider. Never use real payment accounts, credentials, or payloads.
 

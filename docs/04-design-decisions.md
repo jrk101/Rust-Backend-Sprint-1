@@ -38,7 +38,7 @@ measured. Deduplication and delivery truth remain in PostgreSQL.
 They make signature verification, duplicates, failures, delays, and retries
 demonstrable without real money or external accounts.
 
-### D-007: Use 17 units as the draft cadence
+### D-007: Use 17 units as the cohort cadence
 
 Seventeen units separate first HTTP contact from the first vertical slice,
 retry policy from work claiming, management from security hardening, and CI
@@ -65,7 +65,7 @@ Web's `web::Data` already uses shared ownership internally, so lessons should
 not require an extra `Arc` around it without a specific reason. The separate
 Actix actor framework is not part of V1.
 
-## Pending
+## To record during cohort setup
 
 - Cohort size and the shared-build rotation size
 - Supported development operating systems

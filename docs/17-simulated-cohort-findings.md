@@ -25,7 +25,7 @@ records the non-spoiler curriculum fixes promoted from that exercise.
 
 These were local audit observations, not milestone passes for students.
 
-## Improvements in this branch
+## Improvements included in the cohort starter
 
 1. A **minimal, answer-free Cargo workspace** now compiles. The three shared
    crates contain only placeholders. This closes the missing-starter-file
@@ -35,21 +35,18 @@ These were local audit observations, not milestone passes for students.
    single configured operator. Students must justify that choice.
 4. The merchant task now calls for ordered failure and slow-response control,
    and Unit 12 calls for an isolated database.
-5. The publication checklist distinguishes files and local checks from CI on
-   a sample PR, Compose on a clean machine, staged teaching checkpoints, and
-   a real Unit 1 learner trial.
+5. The cohort operations notes separate the starting materials from work
+   students will build in later units.
 
-## Still open before students arrive
+## Follow-through during the cohort
 
-- Validate the GitHub Actions workflow on an actual pull request.
-- Test PostgreSQL migration commands and Compose on supported systems.
-- Trial Unit 1 with a learner at the intended level and measure task time.
-- Decide cohort dates, rotation assignments, mentor capacity, and witnesses.
-- Agree the Unit 1 product semantics before learners make incompatible choices.
-- Prepare an unsigned Unit 5 checkpoint and review Units 8, 10–11, and 14
-  with mentors. The audit prototype showed why concurrency, claim recovery,
-  and outbound destination policy need unusually careful tests.
+- Record dates, rotations, and reviewers as the cohort is organized.
+- Agree the product semantics in Unit 1 before implementation diverges.
+- Run the starter CI on the first shared pull request, then add database tests
+  and Compose checks as those capabilities are built.
+- Give Units 8, 10–11, and 14 careful review. The audit prototype showed why
+  concurrency, claim recovery, and destination policy need strong tests.
 - Have an independent operator run the Unit 17 clean-start handover.
 
-The starter workspace passing `cargo test` proves only that the scaffold
-compiles. It does not mean PayHook works or the cohort is publication-ready.
+The starter workspace passing `cargo test` proves that the scaffold compiles.
+PayHook functionality is intentionally built by students during the cohort.
