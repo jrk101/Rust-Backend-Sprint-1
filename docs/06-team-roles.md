@@ -1,7 +1,6 @@
 # Team Roles
 
-The exact number of students and reviewers is pending. These roles scale without
-assuming a particular cohort size.
+These roles scale to the number of students and reviewers in the cohort.
 
 Before each unit opens, write the assigned names in
 `shared/delivery/rotation-log.md`. No student should discover during a
