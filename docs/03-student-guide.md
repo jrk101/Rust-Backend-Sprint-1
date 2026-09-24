@@ -15,6 +15,10 @@
 
 ## How to read a task path
 
+Find your assigned ID in [`practice/`](../practice/README.md). Open your
+current unit's `problem_statement.md`, then follow its link to the full unit
+tasks. Keep your answers and code in your own folder.
+
 `<student-id>` means the ID assigned before the cohort begins. A task with a
 Markdown or SQL path commits that exact file. A task with a directory path
 commits the small crate or module files needed for that task under that
