@@ -43,7 +43,7 @@ every task.
 Rust-Backend-Sprint-1/
 ├── docs/                 curriculum-wide reference documents
 ├── units/                one working file per unit
-├── practice/             individual student work (created for the cohort)
+├── practice/             individual workspaces for RB01, RB02, and RB03
 ├── shared/
 │   ├── payhook/          the real shared product
 │   ├── mock-provider/    a small signed-event generator
